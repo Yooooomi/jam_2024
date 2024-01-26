@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1560123037209472733}
   - component: {fileID: 4940581715878974522}
   - component: {fileID: 3695878217961359432}
+  - component: {fileID: 6011718808665802133}
+  - component: {fileID: 4796238860036251162}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
   pick: 0
+  secondaryAction: 0
 --- !u!114 &1560123037209472733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 3695878217961359432}
+  speedModifier: {fileID: 4796238860036251162}
   moveSpeed: 5
 --- !u!61 &4940581715878974522
 BoxCollider2D:
@@ -136,6 +140,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6011718808665802133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191930911488095691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fc9930799d68f47a8ed6c4adf17615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeedModifier: {fileID: 4796238860036251162}
+  playerControls: {fileID: 1995413801081972887}
+  juggleDuration: 1
+--- !u!114 &4796238860036251162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191930911488095691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9eb037be8f37ac4a93358d8957d99b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9004818094476244673
 GameObject:
   m_ObjectHideFlags: 0
