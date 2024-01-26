@@ -19,10 +19,8 @@ public class Door : MonoBehaviour
             // Offset half size of the goto object and half size of the player
             // To prevent collision
             offsetX += offsetDir * (bringsTo.transform.GetComponent<Collider2D>().bounds.size.x / 2 +
-                collider.GetComponent<Collider2D>().bounds.size.x / 2);
-            Debug.Log(offsetX);
+                collider.bounds.size.x / 2);
             goToPos.x += offsetX;
-            Debug.Log(goToPos);
             collider.GetComponent<PlayerMovement>().SetPos(goToPos);
         }
     }
