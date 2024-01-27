@@ -385,18 +385,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameState
       objectReference: {fileID: 0}
-    - target: {fileID: 8990117128420888885, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
-      propertyPath: kingSteps.Array.data[0].pointsToReach
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990117128420888885, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
-      propertyPath: kingSteps.Array.data[1].pointsToReach
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990117128420888885, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
-      propertyPath: kingSteps.Array.data[2].pointsToReach
-      value: 300
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
