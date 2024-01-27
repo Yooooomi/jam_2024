@@ -4,38 +4,6 @@ using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
 
-public class PlayerState
-{
-    private bool ready;
-
-    public float points = 0;
-
-    public void AddPoints(float toAdd)
-    {
-        points += toAdd;
-    }
-
-    public PlayerState()
-    {
-        ready = false;
-    }
-
-    public void Ready()
-    {
-        ready = true;
-    }
-
-    public void Unready()
-    {
-        ready = false;
-    }
-
-    public bool IsReady()
-    {
-        return ready;
-    }
-}
-
 public class GameState : MonoBehaviour
 {
     public GamePoints gamePoints;
@@ -57,17 +25,24 @@ public class GameState : MonoBehaviour
     public UnityEvent onGameEnd = new UnityEvent();
     private Coroutine gameStartCoroutine;
 
-    private Dictionary<int, PlayerState> players = new Dictionary<int, PlayerState>();
+    private Dictionary<int, PlayerGameState> players = new Dictionary<int, PlayerGameState>();
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void AddPlayer(Transform transform)
+    public void AddPlayer(PlayerGameState playerGameState)
     {
-        int id = transform.GetInstanceID();
-        players[id] = new PlayerState();
+        int id = playerGameState.gameObject.GetInstanceID();
+        players[id] = playerGameState;
+        onPlayerCountChange.Invoke();
+    }
+
+    public void RemovePlayer(PlayerGameState playerGameState)
+    {
+        int id = playerGameState.gameObject.GetInstanceID();
+        players.Remove(id);
         onPlayerCountChange.Invoke();
     }
 
@@ -81,37 +56,25 @@ public class GameState : MonoBehaviour
     }
 
     public int GetTotalPoints() {
-        return (int)players.Sum(p => p.Value.points);
+        return players.Sum(p => p.Value.points);
     }
 
-    public void RemovePlayer(Transform transform)
+    public PlayerGameState GetPlayerState(int id)
     {
-        int id = transform.GetInstanceID();
-        players.Remove(id);
-        onPlayerCountChange.Invoke();
+        return players[id];
     }
 
-    public PlayerState GetPlayerState(Transform transform)
+    public void ReadyPlayer(Transform playerTransform)
     {
-        if (!players.ContainsKey(transform.GetInstanceID()))
-        {
-            Debug.LogError("Invalid player transform, not registered");
-            return new PlayerState();
-        }
-        return players[transform.GetInstanceID()];
-    }
-
-    public void ReadyPlayer(Transform transform)
-    {
-        PlayerState state = players[transform.GetInstanceID()];
+        PlayerGameState state = players[playerTransform.gameObject.GetInstanceID()];
         state.Ready();
         onPlayerReady.Invoke();
         CheckAllPlayersReady();
     }
 
-    public void UnreadyPlayer(Transform transform)
+    public void UnreadyPlayer(Transform playerTransform)
     {
-        PlayerState state = players[transform.GetInstanceID()];
+        PlayerGameState state = players[playerTransform.gameObject.GetInstanceID()];
         state.Unready();
         onPlayerUnready.Invoke();
         CheckAllPlayersReady();

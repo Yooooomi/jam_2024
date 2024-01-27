@@ -2,9 +2,20 @@ using UnityEngine;
 
 public class PlayerPointFeedback : MonoBehaviour
 {
-    private ParticleSystem particleSystem;
+    private PlayerGameState playerGameState;
+    [SerializeField]
+    private float starsPerPointRatio;
+    
+    [SerializeField]
+    private ParticleSystem system;
 
-    public void Feedback(float intensity) {
+    private void Start() {
+        playerGameState = GetComponent<PlayerGameState>();
+        playerGameState.onPlayerPointsEarned.AddListener(Feedback);
+    }
 
+    public void Feedback(int points) {
+        int particleCount = (int) (points / starsPerPointRatio);
+        system.Emit(particleCount);
     }
 }
