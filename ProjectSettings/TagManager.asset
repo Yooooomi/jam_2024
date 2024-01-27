@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 2112409615
+    locked: 0
+  - name: Props
+    uniqueID: 3353369883
+    locked: 0
+  - name: Ceil
+    uniqueID: 2490820033
+    locked: 0

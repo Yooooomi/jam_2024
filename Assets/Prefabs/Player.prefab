@@ -341,7 +341,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3432442145703568599}
@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1560123037209472733}
+  juggle: {fileID: 6011718808665802133}
 --- !u!95 &2654627201139030019
 Animator:
   serializedVersion: 5
@@ -578,6 +579,7 @@ GameObject:
   - component: {fileID: 2146411336324502010}
   - component: {fileID: 8013568982656208890}
   - component: {fileID: 7066865782673413828}
+  - component: {fileID: 8894653688241056825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -647,7 +649,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 1.02, y: 1.33}
   m_EdgeRadius: 0
 --- !u!50 &3695878217961359432
 Rigidbody2D:
@@ -835,6 +837,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013585ecfffcf72428e22bd9dd114b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8894653688241056825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191930911488095691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000000fd0e87d1b5de0c7c1e57694
+  m_ShapePath:
+  - {x: -0.107744694, y: 0.06585741, z: 0}
+  - {x: -0.39831161, y: 0.8178427, z: 0}
+  - {x: 0.34894514, y: 0.7320635, z: 0}
+  - {x: 0.14173841, y: 0.105516315, z: 0}
+  m_ShapePathHash: 45135585
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -274944
+  m_LocalBounds:
+    m_Center: {x: -0.024683237, y: 0.44185007, z: 0}
+    m_Extent: {x: 0.37362838, y: 0.37599266, z: 0}
 --- !u!1 &9004818094476244673
 GameObject:
   m_ObjectHideFlags: 0

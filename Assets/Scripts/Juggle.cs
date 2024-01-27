@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Juggle : MonoBehaviour
@@ -8,34 +6,53 @@ public class Juggle : MonoBehaviour
     public PlayerControls playerControls;
     public float juggleDuration = 1.0f;
 
-    private float jugglingLeftTime = 0.0f;
+    private float jugglingTime = 0f;
+    public bool isJuggling {
+        get;
+        private set;
+    }
+    private SpeedDot infiniteDot;
 
-    void StartToJuggle()
+    private void StartToJuggle()
     {
-        jugglingLeftTime = juggleDuration;
-        playerSpeedModifier.ApplyDot(new SpeedDot(juggleDuration, 0.0f));
+        isJuggling = true;
+        playerSpeedModifier.ApplyDot(new SpeedDot(juggleDuration, .0f));
     }
 
-    void StopJuggle()
-    {
-        jugglingLeftTime = 0.0f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (jugglingLeftTime > 0.0f)
-        {
-            jugglingLeftTime -= Time.deltaTime;
-            if (jugglingLeftTime <= 0.0f)
-            {
-                GameState.instance.gamePoints.RegisterJuggle(transform);
-                StopJuggle();
-            }
+    private void ContinueJuggling() {
+        if (infiniteDot != null) {
+            return;
         }
-        else if (playerControls.secondaryAction)
-        {
+        infiniteDot = new SpeedDot(Dot.INFINITE_DURATION, .0f);
+        playerSpeedModifier.ApplyDot(infiniteDot);
+    }
+
+    private void StopJuggle()
+    {
+        isJuggling = false;
+        jugglingTime = 0f;
+        if (infiniteDot != null) {
+            playerSpeedModifier.CancelDot(infiniteDot);
+            infiniteDot = null;
+        }
+    }
+
+
+    private void Update()
+    {
+        if (isJuggling) {
+            jugglingTime += Time.deltaTime;
+        }
+        if (jugglingTime > juggleDuration) {
+            ContinueJuggling();
+            jugglingTime -= juggleDuration;
+            GameState.instance.gamePoints.RegisterJuggle(transform);
+        }
+        if (!isJuggling && playerControls.secondaryAction) {
             StartToJuggle();
+        }
+        if (isJuggling && !playerControls.secondaryAction) {
+            StopJuggle();
         }
     }
 }
