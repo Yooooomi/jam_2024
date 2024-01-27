@@ -5,13 +5,8 @@ public abstract class Pickable : MonoBehaviour
 {
     [SerializeField]
     protected Transform root;
-    private UnityEvent onPick;
+    public UnityEvent onPick = new UnityEvent();
     protected Transform currentHolder;
-
-    public void OnPick()
-    {
-        onPick.Invoke();
-    }
 
     public bool CanBePicked()
     {
@@ -29,6 +24,7 @@ public abstract class Pickable : MonoBehaviour
     public void Pick(Transform parentTransform)
     {
         currentHolder = parentTransform;
+        onPick.Invoke();
         ReactToPick();
     }
 

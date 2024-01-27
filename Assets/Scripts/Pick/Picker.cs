@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Picker : MonoBehaviour
 {
-    private List<Pickable> pickables = new List<Pickable>();
+    private Collider2D myCollider;
     private Pickable currentlyPicked;
     private PlayerControls controls;
     private float startedThrowingAt = -1;
@@ -14,44 +14,36 @@ public class Picker : MonoBehaviour
     private void Start()
     {
         controls = GetComponent<PlayerControls>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        Pickable pickable = collider.GetComponent<Pickable>();
-
-        if (pickable == null)
-        {
-            return;
-        }
-
-        pickables.Add(pickable);
-    }
-
-    private void OnTriggerExit2D(Collider2D collider)
-    {
-        Pickable pickable = collider.GetComponent<Pickable>();
-
-        if (pickable == null)
-        {
-            return;
-        }
-
-        pickables.Remove(pickable);
+        myCollider = GetComponent<Collider2D>();
     }
 
     private void PickNearest() {
-        if (pickables.Count == 0)
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D().NoFilter();
+        filter.useTriggers = true;
+
+        int resultCount = myCollider.OverlapCollider(filter, results);
+        if (resultCount == 0)
         {
             return;
         }
-        List<Pickable> allowedPickables = pickables.Where(e => e.CanBePicked()).ToList();
 
-        if (allowedPickables.Count == 0) {
+        List<Pickable> pickables = results.Select(e => {
+            Pickable pickable = e.GetComponent<Pickable>();
+            if (pickable == null) {
+                return null;
+            }
+            if (!pickable.CanBePicked()) {
+                return null;
+            }
+            return pickable;
+        }).Where(e => e != null).ToList();
+
+        if (pickables.Count == 0) {
             return;
         }
 
-        Pickable nearestPickable = allowedPickables.OrderBy(e => (transform.position - e.transform.position).magnitude).First();
+        Pickable nearestPickable = pickables.OrderBy(e => (transform.position - e.transform.position).magnitude).First();
         nearestPickable.Pick(transform);
         currentlyPicked = nearestPickable;
     }
