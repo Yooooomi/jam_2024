@@ -20,7 +20,6 @@ public class GamePoints : MonoBehaviour
 
         private void AddPlayerPoint(PlayerState player, float points, KingExpectationType kingExpectationType, int playerBullied = 0)
     {
-        Debug.Log("youhouuuu");
         if (kingExpectationType == kingLifecycle.currentKingExpectation &&
             (kingExpectationType != KingExpectationType.FocusPlayer || playerBullied == kingLifecycle.focusedPlayerId))
         {
@@ -53,5 +52,4 @@ public class GamePoints : MonoBehaviour
     {
         AddPlayerPoint(GameState.instance.GetPlayerState(throwBy), pointsSystem.throwPlayerInArmor, KingExpectationType.FocusPlayer, playerBullied.GetInstanceID());
     }
-
 }
