@@ -460,6 +460,7 @@ MonoBehaviour:
   speedModifier: {fileID: 4796238860036251162}
   moveSpeed: 5
   lookingDirection: {x: 0, y: 0, z: 0, w: 0}
+  throwable: {fileID: 4983703451220279642}
 --- !u!114 &6011718808665802133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5521249659855570136}
   - component: {fileID: 6022977036495765305}
+  - component: {fileID: 4983703451220279642}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -657,3 +659,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4983703451220279642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9004818094476244673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa97cb44f8918584986089401b8c8088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 3432442145703568599}
+  speedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  travelTime: 0
+  baseThrowSpeed: 0
+  throwPowerSpeedMultiplier: 0

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public SpeedModifier speedModifier;
     public float moveSpeed = 5.0f;
     public Quaternion lookingDirection;
+    public ThrowablePickable throwable;
 
     private void Start()
     {
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (throwable.IsBeingThrow() || throwable.IsBeingPicked()) {
+            return;
+        }
         Vector2 movement = new Vector2(controls.direction.x, controls.direction.y) * moveSpeed * speedModifier.getValue() * Time.deltaTime;
         rigidbody2d.MovePosition(movement + new Vector2(transform.position.x, transform.position.y));
 
