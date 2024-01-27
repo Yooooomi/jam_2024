@@ -27,7 +27,7 @@ public class ObjectSpawner : MonoBehaviour
         timeBeforeSpawn = Random.Range(minDelayBetweenPickupAndSpawn, maxDelayBetweenPickupAndSpawn);
     }
 
-    private void SpawnObject()
+    protected virtual void SpawnObject()
     {
         GameObject toSpawn = itemToSpawn[Random.Range(0, itemToSpawn.Count - 1)];
         Vector3 positionToSpawn = transform.TransformPoint(Vector3.zero);
