@@ -34,7 +34,7 @@ public class Armor : MonoBehaviour
         {
             return;
         }
-        ThrowablePickable throwable = collider.GetComponent<ThrowablePickable>();
+        ThrowablePickable throwable = collider.GetComponentInChildren<ThrowablePickable>();
         if (!throwable.IsBeingThrow())
         {
             return;

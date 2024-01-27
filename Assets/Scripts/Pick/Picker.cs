@@ -10,6 +10,8 @@ public class Picker : MonoBehaviour
     private float startedThrowingAt = -1;
     public float timeToMaxThrowPower;
     private bool wasHittingPickButton;
+    [SerializeField]
+    private List<Collider2D> unpickableColliders;
 
     private void Start()
     {
@@ -29,6 +31,9 @@ public class Picker : MonoBehaviour
         }
 
         List<Pickable> pickables = results.Select(e => {
+            if (unpickableColliders.Contains(e)) {
+                return null;
+            }
             Pickable pickable = e.GetComponent<Pickable>();
             if (pickable == null) {
                 return null;
