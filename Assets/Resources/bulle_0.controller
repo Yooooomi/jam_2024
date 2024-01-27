@@ -123,7 +123,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7940343873393382778}
-    m_Position: {x: 220, y: 40, z: 0}
+    m_Position: {x: 210, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6026284183011140398}
     m_Position: {x: 200, y: -60, z: 0}
@@ -149,7 +149,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: ChangeExpectation
     m_EventTreshold: 0
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: HaveExpectation
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}

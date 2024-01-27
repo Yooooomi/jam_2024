@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -78,7 +79,7 @@ public class KingLifecycle : MonoBehaviour
             return;
         }
         kingStepChangeEvent.Invoke(GetCurrentKingStep());
-        ClearExpectation();
+        NextExpectation();
     }
 
     void ClearExpectation()
@@ -92,9 +93,11 @@ public class KingLifecycle : MonoBehaviour
 
     void NextExpectation()
     {
+        KingExpectationType oldKingExpectation = currentKingExpectation;
         ClearExpectation();
         KingStep activeKingStep = GetCurrentKingStep();
-        currentKingExpectation = activeKingStep.expectations[Random.Range(0, activeKingStep.expectations.Count)];
+        List<KingExpectationType> eligibleExpectation  = activeKingStep.expectations.Where(e => e != oldKingExpectation).ToList();
+        currentKingExpectation = eligibleExpectation[Random.Range(0, eligibleExpectation.Count)];
         if (currentKingExpectation == KingExpectationType.FocusPlayer)
         {
             focusedPlayerId = GameState.instance.GetPlayerIdWithMostPoint();
