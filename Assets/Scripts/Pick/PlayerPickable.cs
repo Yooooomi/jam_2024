@@ -19,7 +19,7 @@ public class PlayerPickable : ThrowablePickable
         if (!isLaunched) {
             return false;
         }
-        GameState.instance.RegisterPlayerThrow(oldHolder, root);
+        GameState.instance.gamePoints.RegisterPlayerThrow(oldHolder, root);
         playerRigidbody.simulated = true;
         return isLaunched;
     }

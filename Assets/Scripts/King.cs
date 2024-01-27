@@ -6,11 +6,11 @@ public class King : MonoBehaviour
 {
     void Start()
     {
-        GameState.instance.kingExpectationChangeEvent.AddListener(OnKingExpectationChange);
+        GameState.instance.kingLifecycle.kingExpectationChangeEvent.AddListener(OnKingExpectationChange);
     }
 
     void OnDestroy() {
-        GameState.instance.kingExpectationChangeEvent.RemoveListener(OnKingExpectationChange);
+        GameState.instance.kingLifecycle.kingExpectationChangeEvent.RemoveListener(OnKingExpectationChange);
     }
 
     void OnKingExpectationChange(KingExpectationChangeEventArguments args) {
