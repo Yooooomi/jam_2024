@@ -98,8 +98,9 @@ public class GameState : MonoBehaviour
     public void UnreadyPlayer(Transform transform)
     {
         PlayerState state = players[transform.GetInstanceID()];
-        onPlayerUnready.Invoke();
         state.Unready();
+        onPlayerUnready.Invoke();
+        CheckAllPlayersReady();
     }
 
     public int CountPlayers()

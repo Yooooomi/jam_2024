@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 668025161}
   - component: {fileID: 668025163}
   - component: {fileID: 668025162}
+  - component: {fileID: 668025164}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -314,6 +315,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668025160}
   m_CullTransparentMesh: 1
+--- !u!95 &668025164
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668025160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a43f84af2ab6b04ba9cf0788525d288, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &878367777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,7 +346,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3432442145703568599, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.51
       objectReference: {fileID: 0}
     - target: {fileID: 3432442145703568599, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -361,6 +383,30 @@ PrefabInstance:
     - target: {fileID: 3432442145703568599, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940581715878974522, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940581715878974522, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.x
+      value: 8.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.y
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -984364878, guid: 3966de93bd8ce694bbe97e02ac20fe7f, type: 3}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8191930911488095691, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_Name
@@ -576,6 +622,13 @@ MonoBehaviour:
   onGameStarted:
     m_PersistentCalls:
       m_Calls: []
+  pointsSystem:
+    juggle: 0
+    throwPlayer: 0
+    throwPlayerInArmor: 0
+    foodThrow: 0
+    foodThrowHit: 0
+    meetKingExpectationMultiplicator: 0
 --- !u!1 &1652797841
 GameObject:
   m_ObjectHideFlags: 0
