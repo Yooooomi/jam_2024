@@ -16,6 +16,11 @@ public abstract class Pickable : MonoBehaviour
         return currentHolder == null;
     }
 
+    public bool IsBeingPicked()
+    {
+        return currentHolder != null;
+    }
+
     protected abstract void ReactToPick();
     protected abstract bool ReactToRelease(float power);
 

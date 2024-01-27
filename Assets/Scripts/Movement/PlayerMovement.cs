@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public SpeedModifier speedModifier;
     public float moveSpeed = 5.0f;
     public Quaternion lookingDirection;
+    public ThrowablePickable throwable;
 
     private void Start()
     {
@@ -19,8 +20,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 movement = new Vector2(controls.direction.x, controls.direction.y) * moveSpeed * speedModifier.getValue() * Time.deltaTime;
-        rigidbody2d.MovePosition(movement + new Vector2(transform.position.x, transform.position.y));
+        if (throwable.IsBeingPicked()) {
+            return;
+        }
+    
+        Vector2 movement;
+        if (throwable.IsBeingThrow()) {
+            movement = throwable.GetFrameThrow();
+        } else {
+            movement = new Vector2(controls.direction.x, controls.direction.y) * moveSpeed * speedModifier.getValue();
+        }
+    
+        rigidbody2d.MovePosition(Time.deltaTime * movement + new Vector2(transform.position.x, transform.position.y));
 
         if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.y) > 0) {
             lookingDirection = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg));

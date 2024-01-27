@@ -10,24 +10,36 @@ public class Armor : MonoBehaviour
     private bool playerTrap = false;
     private float playerStunLeft = 0;
 
-    void Update() {
-        if (!playerTrap) {
+    void Update()
+    {
+        if (!playerTrap)
+        {
             return;
         }
         playerStunLeft -= Time.deltaTime;
-        if (playerStunLeft < 0) {
+        if (playerStunLeft < 0)
+        {
             OnTrapReleased();
         }
     }
 
-    void OnTrapReleased() {
+    void OnTrapReleased()
+    {
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (!playerTrap && !collider.CompareTag(Tags.PLAYER)) {
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (!playerTrap && !collider.CompareTag(Tags.PLAYER))
+        {
             return;
         }
+        ThrowablePickable throwable = collider.GetComponentInChildren<ThrowablePickable>();
+        if (!throwable.IsBeingThrow())
+        {
+            return;
+        }
+        throwable.StopThrow();
         collider.GetComponent<SpeedModifier>().ApplyDot(new SpeedDot(stunDuration, 0));
         playerTrap = true;
         playerStunLeft = stunDuration;
