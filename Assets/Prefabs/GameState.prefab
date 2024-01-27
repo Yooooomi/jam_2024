@@ -81,14 +81,17 @@ MonoBehaviour:
     expectations: 0200000004000000
     minNewExpectationSeconds: 10
     maxNewExpectationSeconds: 30
+    stepIndex: 0
   - pointsToReach: 200
     expectations: 02000000040000000300000001000000
     minNewExpectationSeconds: 10
     maxNewExpectationSeconds: 20
+    stepIndex: 1
   - pointsToReach: 300
     expectations: 010000000400000003000000
     minNewExpectationSeconds: 10
     maxNewExpectationSeconds: 20
+    stepIndex: 2
 --- !u!114 &625966546023393171
 MonoBehaviour:
   m_ObjectHideFlags: 0

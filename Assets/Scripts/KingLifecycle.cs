@@ -24,6 +24,7 @@ public class KingStep
     public List<KingExpectationType> expectations;
     public float minNewExpectationSeconds;
     public float maxNewExpectationSeconds;
+    public int stepIndex;
 }
 
 public class KingLifecycle : MonoBehaviour
@@ -49,6 +50,10 @@ public class KingLifecycle : MonoBehaviour
     [HideInInspector]
     public KingExpectationChangeEvent kingExpectationChangeEvent = new KingExpectationChangeEvent();
 
+    public class KingStepChangeEvent : UnityEvent<KingStep> { }
+    [HideInInspector]
+    public KingStepChangeEvent kingStepChangeEvent = new KingStepChangeEvent();
+
     private float timeForNewExpectation = 0.0f;
 
     void Start()
@@ -72,6 +77,7 @@ public class KingLifecycle : MonoBehaviour
         {
             return;
         }
+        kingStepChangeEvent.Invoke(GetCurrentKingStep());
         ClearExpectation();
     }
 
