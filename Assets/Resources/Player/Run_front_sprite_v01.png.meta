@@ -130,8 +130,8 @@ TextureImporter:
         y: 845
         width: 806
         height: 690
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.47131658, y: 0.002202396}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,11 +148,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 982
-        y: 836
+        y: 855
         width: 835
-        height: 704
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 685
+      alignment: 9
+      pivot: {x: 0.45211145, y: 0.0006853758}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Run_front_sprite_v01_2
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 1922
         y: 845
         width: 794
         height: 692
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.4809195, y: 0.0031929677}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,8 +193,8 @@ TextureImporter:
         y: 852
         width: 844
         height: 698
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.46016893, y: 0.0010382098}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

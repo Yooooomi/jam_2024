@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d4601f5d1c487e49bce08da6dc2f379
+guid: b1046693926c2bb428c3cc3d8ce495b1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,85 +123,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run_right_sprite_v01_0
+      name: Juggle_sprite_v01_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 873
-        width: 620
-        height: 797
-      alignment: 9
-      pivot: {x: 0.63048345, y: 0.0030463971}
+        x: 82
+        y: 1105
+        width: 992
+        height: 1013
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bb9bda24f832df4581cb49751d36d2f
-      internalID: 278575275
+      spriteID: 4258eee70710bd543b8e10e26a14c0b0
+      internalID: 772273309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_right_sprite_v01_1
+      name: Juggle_sprite_v01_1
       rect:
         serializedVersion: 2
-        x: 995
-        y: 852
-        width: 639
-        height: 855
-      alignment: 9
-      pivot: {x: 0.6529795, y: 0.0012755276}
+        x: 1192
+        y: 1103
+        width: 976
+        height: 997
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1e9fd5cd2fa7054f86da964b1fd18ae
-      internalID: -661356018
+      spriteID: d22cddd5dd3c0ed4186a2b1a63b17f9c
+      internalID: -600159113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_right_sprite_v01_2
+      name: Juggle_sprite_v01_2
       rect:
         serializedVersion: 2
-        x: 1940
-        y: 882
-        width: 624
-        height: 788
-      alignment: 9
-      pivot: {x: 0.6512549, y: 0.001648259}
+        x: 2182
+        y: 1105
+        width: 1131
+        height: 994
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7f1bf29c514f7346800db507f48a8b1
-      internalID: -1192757465
+      spriteID: 0a0bef93c424afb42bf34aa2898aea16
+      internalID: -1352165906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run_right_sprite_v01_3
+      name: Juggle_sprite_v01_3
       rect:
         serializedVersion: 2
-        x: 2877
-        y: 852
-        width: 638
-        height: 855
-      alignment: 9
-      pivot: {x: 0.66378623, y: 0.0012755276}
+        x: 81
+        y: 26
+        width: 992
+        height: 1053
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f254a7b55440204e8cb393a404fd997
-      internalID: -2097305261
+      spriteID: 10ab84be8d8139c4095c20a8cea28ca4
+      internalID: -1585511135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Juggle_sprite_v01_4
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 28
+        width: 982
+        height: 1055
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d61a6e5195099940bcc3a935b9dc04f
+      internalID: 658938018
       vertices: []
       indices: 
       edges: []
@@ -217,10 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Run_right_sprite_v01_0: 278575275
-      Run_right_sprite_v01_1: -661356018
-      Run_right_sprite_v01_2: -1192757465
-      Run_right_sprite_v01_3: -2097305261
+      Juggle_sprite_v01_0: 772273309
+      Juggle_sprite_v01_1: -600159113
+      Juggle_sprite_v01_2: -1352165906
+      Juggle_sprite_v01_3: -1585511135
+      Juggle_sprite_v01_4: 658938018
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

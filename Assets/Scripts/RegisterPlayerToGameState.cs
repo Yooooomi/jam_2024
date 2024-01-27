@@ -3,6 +3,6 @@ using UnityEngine;
 public class RegisterPlayerToGameState : MonoBehaviour
 {
     private void Start() {
-        GameState.instance.AddPlayer(transform);
+        GameState.instance.AddPlayer(GetComponent<PlayerGameState>());
     }
 }
