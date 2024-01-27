@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodSpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
-    public List<GameObject> foodToSpawn;
+    public List<GameObject> itemToSpawn;
     public float maxDelayBetweenPickupAndSpawn = 10f;
     public float minDelayBetweenPickupAndSpawn = 1f;
+    public bool spawnAtStart = false;
+
+    protected GameObject spawnedGameObject;
 
     private float timeBeforeSpawn = 0.0f;
-    private bool itemIsPresent = false;
+    protected bool itemIsPresent = false;
 
     private void Start()
     {
         RefreshTimeBeforeSpawn();
+        if (spawnAtStart) {
+            SpawnObject();
+        }
     }
 
     private void RefreshTimeBeforeSpawn()
@@ -21,31 +27,33 @@ public class FoodSpawner : MonoBehaviour
         timeBeforeSpawn = Random.Range(minDelayBetweenPickupAndSpawn, maxDelayBetweenPickupAndSpawn);
     }
 
-    private void SpawnFood()
+    private void SpawnObject()
     {
-        GameObject toSpawn = foodToSpawn[Random.Range(0, foodToSpawn.Count - 1)];
+        GameObject toSpawn = itemToSpawn[Random.Range(0, itemToSpawn.Count - 1)];
         Vector3 positionToSpawn = transform.TransformPoint(Vector3.zero);
         positionToSpawn.z = -1;
-        Instantiate(toSpawn, positionToSpawn, Quaternion.identity);
+        spawnedGameObject = Instantiate(toSpawn, positionToSpawn, Quaternion.identity);
         itemIsPresent = true;
     }
 
-    public void OnPickupCallback()
+    protected void OnObjectUsed()
     {
         itemIsPresent = false;
+        spawnedGameObject = null;
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        if (itemIsPresent) {
+        if (itemIsPresent)
+        {
             return;
         }
         timeBeforeSpawn -= Time.deltaTime;
         if (timeBeforeSpawn <= 0)
         {
             RefreshTimeBeforeSpawn();
-            SpawnFood();
+            SpawnObject();
         }
     }
 }

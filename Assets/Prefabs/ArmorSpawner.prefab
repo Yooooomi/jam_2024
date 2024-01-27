@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8534892793648891030
+--- !u!1 &1635930547651044993
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6411943850022495730}
-  - component: {fileID: 5403487811990268212}
+  - component: {fileID: 4860465483489858466}
+  - component: {fileID: 8304110394117691360}
   m_Layer: 0
-  m_Name: FoodSpawner
+  m_Name: ArmorSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6411943850022495730
+--- !u!4 &4860465483489858466
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534892793648891030}
+  m_GameObject: {fileID: 1635930547651044993}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 21.048733, y: 0.69689703, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5403487811990268212
+--- !u!114 &8304110394117691360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534892793648891030}
+  m_GameObject: {fileID: 1635930547651044993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2ba0199eec5ec4db9496ae86dedde9, type: 3}
+  m_Script: {fileID: 11500000, guid: 52cc92fa57093ef44842ebd460c431a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemToSpawn:
-  - {fileID: 5437294051195665284, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
-  maxDelayBetweenPickupAndSpawn: 10
-  minDelayBetweenPickupAndSpawn: 1
+  - {fileID: 149219821529794966, guid: f75b86730848784478d83711d4cf5d82, type: 3}
+  maxDelayBetweenPickupAndSpawn: 20
+  minDelayBetweenPickupAndSpawn: 10
+  spawnAtStart: 1
