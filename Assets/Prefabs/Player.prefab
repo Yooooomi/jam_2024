@@ -406,6 +406,8 @@ MonoBehaviour:
   onPick:
     m_PersistentCalls:
       m_Calls: []
+  effectiveColliders:
+  - {fileID: 4940581715878974522}
   speedCurve:
     serializedVersion: 2
     m_Curve:
