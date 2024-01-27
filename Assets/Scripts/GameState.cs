@@ -4,17 +4,43 @@ using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
 
-public enum KingExpectationType
+public class PlayerState
 {
-    Unspecified,
-    FocusPlayer,
-    Juggle,
-    ThrowInArmor,
-    CakeFlyingAround,
+    private bool ready;
+
+    public float points = 0;
+
+    public void AddPoints(float toAdd)
+    {
+        points += toAdd;
+    }
+
+    public PlayerState()
+    {
+        ready = false;
+    }
+
+    public void Ready()
+    {
+        ready = true;
+    }
+
+    public void Unready()
+    {
+        ready = false;
+    }
+
+    public bool IsReady()
+    {
+        return ready;
+    }
 }
 
 public class GameState : MonoBehaviour
 {
+    public GamePoints gamePoints;
+    public KingLifecycle kingLifecycle;
+
     public class GameReadyCountdownChangeEvent : UnityEvent<int> { }
 
     public static GameState instance;
@@ -30,95 +56,11 @@ public class GameState : MonoBehaviour
     public UnityEvent onGameStarted = new UnityEvent();
     private Coroutine gameStartCoroutine;
 
-    [SerializeField]
-    private PointsSystem pointsSystem;
-
-    [System.Serializable]
-    private struct PointsSystem
-    {
-        public float juggle;
-        public float throwPlayer;
-        public float throwPlayerInArmor;
-        public float foodThrow;
-        public float foodThrowHit;
-        public float meetKingExpectationMultiplicator;
-
-    }
-
-    private class PlayerState
-    {
-        private bool ready;
-
-        public float points = 0;
-
-        public void AddPoints(float toAdd)
-        {
-            points += toAdd;
-        }
-
-        public PlayerState()
-        {
-            ready = false;
-        }
-
-        public void Ready()
-        {
-            ready = true;
-        }
-
-        public void Unready()
-        {
-            ready = false;
-        }
-
-        public bool IsReady()
-        {
-            return ready;
-        }
-    }
-
     private Dictionary<int, PlayerState> players = new Dictionary<int, PlayerState>();
-    private KingExpectationType currentKingExpectation = KingExpectationType.Unspecified;
-    int focusedPlayerId = 0;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void AddPlayerPoint(PlayerState player, float points, KingExpectationType kingExpectationType, int playerBullied = 0)
-    {
-        if (kingExpectationType == currentKingExpectation &&
-            (kingExpectationType != KingExpectationType.FocusPlayer || playerBullied == focusedPlayerId))
-        {
-            points *= pointsSystem.meetKingExpectationMultiplicator;
-        }
-        player.AddPoints(points);
-    }
-
-    public void RegisterJuggle(Transform player)
-    {
-        AddPlayerPoint(GetPlayerState(player), pointsSystem.juggle, KingExpectationType.Juggle);
-    }
-
-    public void RegisterFoodThrow(Transform throwBy)
-    {
-        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.foodThrow, KingExpectationType.CakeFlyingAround);
-    }
-
-    public void RegisterFoodThrowHit(Transform throwBy, Transform hit)
-    {
-        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.foodThrowHit, KingExpectationType.CakeFlyingAround);
-    }
-
-    public void RegisterPlayerThrow(Transform throwBy, Transform throwWho)
-    {
-        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.throwPlayer, KingExpectationType.FocusPlayer, throwWho.GetInstanceID());
-    }
-
-    public void RegisterPlayerInArmor(Transform throwBy, Transform playerBullied)
-    {
-        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.throwPlayerInArmor, KingExpectationType.FocusPlayer, playerBullied.GetInstanceID());
     }
 
     public void AddPlayer(Transform transform)
@@ -135,7 +77,7 @@ public class GameState : MonoBehaviour
         onPlayerCountChange.Invoke();
     }
 
-    private PlayerState GetPlayerState(Transform transform)
+    public PlayerState GetPlayerState(Transform transform)
     {
         if (!players.ContainsKey(transform.GetInstanceID()))
         {

@@ -31,7 +31,7 @@ public class Cake : MonoBehaviour
             return;
         }
 
-        GameState.instance.RegisterFoodThrowHit(throwablePicker.oldHolder, collider.transform);
+        GameState.instance.gamePoints.RegisterFoodThrowHit(throwablePicker.oldHolder, collider.transform);
         speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
         Destroy(root.gameObject);
     }

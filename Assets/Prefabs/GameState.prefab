@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1259353214042313408}
   - component: {fileID: 4923398296601700851}
+  - component: {fileID: 8990117128420888885}
+  - component: {fileID: 625966546023393171}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3422832944482460656}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.59133977, y: 1.0127275, z: -9.9614105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,10 +46,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233d57623fa32e24a94e068282726886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePoints: {fileID: 625966546023393171}
+  kingLifecycle: {fileID: 8990117128420888885}
+  onPlayerCountChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerUnready:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8990117128420888885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422832944482460656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddeb861f9481094db5b295011305028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentKingExpectation: 0
+  focusedPlayerId: 0
+--- !u!114 &625966546023393171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422832944482460656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd89f3ff6a65074db9fc313a1969651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kingLifecycle: {fileID: 8990117128420888885}
   pointsSystem:
     juggle: 10
-    throwPlayer: 2
-    throwPlayerInArmor: 5
+    throwPlayer: 1
+    throwPlayerInArmor: 20
     foodThrow: 1
-    foodThrowHit: 3
+    foodThrowHit: 5
     meetKingExpectationMultiplicator: 2

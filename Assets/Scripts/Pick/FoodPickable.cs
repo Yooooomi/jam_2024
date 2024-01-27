@@ -10,7 +10,7 @@ public class FoodPickable : ThrowablePickable
         if (!isLaunched) {
             return false;
         }
-        GameState.instance.RegisterFoodThrow(root);
+        GameState.instance.gamePoints.RegisterFoodThrow(root);
         return isLaunched;
     }
 }
