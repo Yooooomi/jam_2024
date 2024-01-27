@@ -9,17 +9,19 @@ public class ThrowablePickable : OverheadPickable
     public AnimationCurve speedCurve;
     public float travelTime;
     public float throwSpeed;
+    private float thrownPower;
 
-    protected override bool ReactToRelease()
+    protected override bool ReactToRelease(float power)
     {
         Transform oldHolder = currentHolder;
-        bool isLaunched = base.ReactToRelease();
+        bool isLaunched = base.ReactToRelease(power);
         if (!isLaunched)
         {
             return false;
         }
         direction = oldHolder.rotation;
         thrownAt = Time.time;
+        thrownPower =  throwSpeed * power;
         return true;
     }
 
@@ -36,7 +38,7 @@ public class ThrowablePickable : OverheadPickable
             return Vector2.zero;
         }
         float thrownSince = Time.time - thrownAt;
-        float frameThrowSpeed = speedCurve.Evaluate(thrownSince / travelTime) * throwSpeed;
+        float frameThrowSpeed = speedCurve.Evaluate(thrownSince / travelTime) * thrownPower;
         return direction * Vector2.right * frameThrowSpeed;
     }
 }

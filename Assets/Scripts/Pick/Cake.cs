@@ -20,6 +20,9 @@ public class Cake : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (!throwablePicker.HasBeenThrown()) {
+            return;
+        }
         SpeedModifier speedModifier = collider.GetComponent<SpeedModifier>();
 
         if (speedModifier == null)
@@ -27,6 +30,7 @@ public class Cake : MonoBehaviour
             return;
         }
 
+        Destroy(gameObject);
         speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
     }
 }

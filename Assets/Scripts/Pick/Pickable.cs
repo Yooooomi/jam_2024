@@ -17,7 +17,7 @@ public abstract class Pickable : MonoBehaviour
     }
 
     protected abstract void ReactToPick();
-    protected abstract bool ReactToRelease();
+    protected abstract bool ReactToRelease(float power);
 
     public void Pick(Transform parentTransform)
     {
@@ -25,9 +25,9 @@ public abstract class Pickable : MonoBehaviour
         ReactToPick();
     }
 
-    public void Release()
+    public void Release(float power)
     {
-        ReactToRelease();
+        ReactToRelease(power);
         currentHolder = null;
     }
 }

@@ -7,6 +7,9 @@ public class Picker : MonoBehaviour
     private List<Pickable> pickables = new List<Pickable>();
     private Pickable currentlyPicked;
     private PlayerControls controls;
+    private float startedThrowingAt = -1;
+    public float timeToMaxThrowPower;
+    private bool wasHittingPickButton;
 
     private void Start()
     {
@@ -54,20 +57,40 @@ public class Picker : MonoBehaviour
     }
 
     private void ReleaseCurrentlyPicked() {
-        currentlyPicked.Release();
+        currentlyPicked.Release(Mathf.Clamp01(Time.time - startedThrowingAt) / timeToMaxThrowPower);
         currentlyPicked = null;
+        startedThrowingAt = -1;
+    }
+
+    public bool IsHolding() {
+        return currentlyPicked != null;
+    }
+
+    public bool IsThrowing() {
+        return startedThrowingAt != -1;
+    }
+
+    public float GetCurrentThrowPower() {
+        if (!IsThrowing()) {
+            return -1;
+        }
+        return Mathf.Clamp01((Time.time - startedThrowingAt) / timeToMaxThrowPower);
     }
 
     private void Update()
     {
-        if (!controls.pick)
-        {
-            return;
+        if (!wasHittingPickButton && controls.picking && IsHolding()) {
+            startedThrowingAt = Time.time;
         }
-        if (currentlyPicked != null) {
-            ReleaseCurrentlyPicked();
-        } else {
-            PickNearest();
+
+        if (wasHittingPickButton && !controls.picking) {
+            if (IsHolding()) {
+                ReleaseCurrentlyPicked();
+            } else {
+                PickNearest();
+            }
         }
+
+        wasHittingPickButton = controls.picking;
     }
 }
