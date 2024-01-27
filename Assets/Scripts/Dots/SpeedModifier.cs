@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
 
+[System.Serializable]
 public class SpeedDot : Dot
 {
-  public float value;
+  public readonly float value;
   public SpeedDot(float duration, float value) {
     this.value = value;
     this.duration = duration;

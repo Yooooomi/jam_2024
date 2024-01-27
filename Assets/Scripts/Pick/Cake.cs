@@ -5,6 +5,8 @@ public class Cake : OverheadPickable
     public AnimationCurve speedCurve;
     public float speed;
     public float lifetime;
+    public float slowEfficiency;
+    public float slowTime;
     private float thrownAt = -1;
     private Quaternion direction;
 
@@ -29,5 +31,15 @@ public class Cake : OverheadPickable
             Destroy(gameObject);
         }
         transform.position += direction * Vector3.right * frameThrowSpeed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+        SpeedModifier speedModifier = collider.GetComponent<SpeedModifier>();
+
+        if (speedModifier == null) {
+            return;
+        }
+
+        speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
     }
 }
