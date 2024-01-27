@@ -11,7 +11,7 @@ public class OverheadPickable : Pickable
         inventory.SetHead(transform);
     }
 
-    protected override bool ReactToRelease()
+    protected override bool ReactToRelease(float power)
     {
         PlayerInventory inventory = currentHolder.GetComponent<PlayerInventory>();
         if (inventory == null) {

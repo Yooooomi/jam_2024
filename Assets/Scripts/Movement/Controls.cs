@@ -42,13 +42,22 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""id"": ""17876c43-d143-47ed-9020-6de49d4a0aac"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""SecondaryAction"",
                     ""type"": ""Button"",
                     ""id"": ""a09bb66a-70cc-468a-99c0-06e2ca1e853e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""da77339f-4d08-4a18-a0c8-746fa69b1a75"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
@@ -209,6 +218,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59703297-0f78-4408-bee4-5b76899c0750"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bbae126-d1d5-429f-a809-4df26ecc86d8"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +251,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Pick = m_Player.FindAction("Pick", throwIfNotFound: true);
         m_Player_SecondaryAction = m_Player.FindAction("SecondaryAction", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +316,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Pick;
     private readonly InputAction m_Player_SecondaryAction;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -291,6 +324,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Pick => m_Wrapper.m_Player_Pick;
         public InputAction @SecondaryAction => m_Wrapper.m_Player_SecondaryAction;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -309,6 +343,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SecondaryAction.started += instance.OnSecondaryAction;
             @SecondaryAction.performed += instance.OnSecondaryAction;
             @SecondaryAction.canceled += instance.OnSecondaryAction;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -322,6 +359,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SecondaryAction.started -= instance.OnSecondaryAction;
             @SecondaryAction.performed -= instance.OnSecondaryAction;
             @SecondaryAction.canceled -= instance.OnSecondaryAction;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -344,5 +384,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnPick(InputAction.CallbackContext context);
         void OnSecondaryAction(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
