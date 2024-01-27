@@ -43,7 +43,7 @@ public class ObjectSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected virtual void Update()
     {
         if (itemIsPresent)
         {
