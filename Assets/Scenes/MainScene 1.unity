@@ -384,12 +384,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4940581715878974522, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940581715878974522, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.x
+      value: 8.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Size.y
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -984364878, guid: 3966de93bd8ce694bbe97e02ac20fe7f, type: 3}
+    - target: {fileID: 7477215821485721555, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8191930911488095691, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6022977036495765305, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
