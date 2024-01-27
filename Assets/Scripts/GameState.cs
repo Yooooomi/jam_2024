@@ -13,6 +13,12 @@ public enum KingExpectationType
     CakeFlyingAround,
 }
 
+public struct KingExpectationChangeEventArguments
+{
+    public KingExpectationType expectationType;
+    public int focusedPlayerId;
+}
+
 public class GameState : MonoBehaviour
 {
     public class GameReadyCountdownChangeEvent : UnityEvent<int> { }
@@ -42,7 +48,6 @@ public class GameState : MonoBehaviour
         public float foodThrow;
         public float foodThrowHit;
         public float meetKingExpectationMultiplicator;
-
     }
 
     private class PlayerState
@@ -78,8 +83,13 @@ public class GameState : MonoBehaviour
     }
 
     private Dictionary<int, PlayerState> players = new Dictionary<int, PlayerState>();
+
     private KingExpectationType currentKingExpectation = KingExpectationType.Unspecified;
     int focusedPlayerId = 0;
+
+    public class KingExpectationChangeEvent : UnityEvent<KingExpectationChangeEventArguments> { }
+    [HideInInspector]
+    public KingExpectationChangeEvent kingExpectationChangeEvent = new KingExpectationChangeEvent();
 
     private void Awake()
     {
