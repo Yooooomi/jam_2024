@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public abstract class Pickable : MonoBehaviour
 {
+    [SerializeField]
+    protected Transform root;
     private UnityEvent onPick;
     protected Transform currentHolder;
 

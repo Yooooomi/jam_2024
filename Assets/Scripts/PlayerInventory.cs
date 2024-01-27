@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public Transform head;
+    [SerializeField]
+    private Transform head;
+    private Transform currentHead;
 
     public void SetHead(Transform newHead) {
         newHead.SetParent(head);
         newHead.localPosition = Vector3.zero;
-        head = newHead;
+        currentHead = newHead;
     }
 
-    public bool RemoveHeadIfThis(Transform currentHead) {
-        if (head != currentHead) {
+    public bool RemoveHeadIfThis(Transform headToRemove) {
+        if (currentHead != headToRemove) {
             return false;
         }
-        currentHead.SetParent(null);
-        head = null;
+        headToRemove.SetParent(null);
+        currentHead = null;
         return true;
     }
 }

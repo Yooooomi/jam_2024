@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Cake : MonoBehaviour
 {
-    public AnimationCurve speedCurve;
+    [SerializeField]
+    private Transform root;
     public ThrowablePickable throwablePicker;
     public float slowEfficiency;
     public float slowTime;
@@ -12,9 +13,9 @@ public class Cake : MonoBehaviour
         if (throwablePicker.IsBeingThrow())
         {
             Vector2 throwDirection = throwablePicker.GetFrameThrow();
-            transform.position += new Vector3(throwDirection.x, throwDirection.y, 0) * Time.deltaTime;
+            root.position += new Vector3(throwDirection.x, throwDirection.y, 0) * Time.deltaTime;
         } else if (throwablePicker.HasBeenThrown()) {
-            Destroy(gameObject);
+            Destroy(root.gameObject);
         }
     }
 
@@ -30,7 +31,7 @@ public class Cake : MonoBehaviour
             return;
         }
 
-        Destroy(gameObject);
+        Destroy(root.gameObject);
         speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
     }
 }

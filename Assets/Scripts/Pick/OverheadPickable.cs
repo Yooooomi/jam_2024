@@ -8,7 +8,7 @@ public class OverheadPickable : Pickable
         if (inventory == null) {
             Debug.LogWarning("ReactToPick: No player inventory found");
         }
-        inventory.SetHead(transform);
+        inventory.SetHead(root);
     }
 
     protected override bool ReactToRelease(float power)
@@ -17,7 +17,7 @@ public class OverheadPickable : Pickable
         if (inventory == null) {
             Debug.LogWarning("ReactToRelease: No player inventory found");
         }
-        bool deleted = inventory.RemoveHeadIfThis(transform);
+        bool deleted = inventory.RemoveHeadIfThis(root);
         if (!deleted) {
             Debug.Log("RemoveHeadIfThis false");
             return false;

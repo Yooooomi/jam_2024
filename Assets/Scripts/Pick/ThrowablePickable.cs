@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrowablePickable : OverheadPickable
@@ -8,7 +6,8 @@ public class ThrowablePickable : OverheadPickable
     private float thrownAt = -1;
     public AnimationCurve speedCurve;
     public float travelTime;
-    public float throwSpeed;
+    public float baseThrowSpeed;
+    public float throwPowerSpeedMultiplier;
     private float thrownPower;
 
     protected override bool ReactToRelease(float power)
@@ -21,7 +20,7 @@ public class ThrowablePickable : OverheadPickable
         }
         direction = oldHolder.rotation;
         thrownAt = Time.time;
-        thrownPower =  throwSpeed * power;
+        thrownPower = baseThrowSpeed + baseThrowSpeed * throwPowerSpeedMultiplier * power;
         return true;
     }
 
