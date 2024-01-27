@@ -341,7 +341,7 @@ MonoBehaviour:
   - pointsToReach: 100
     expectations: 0200000004000000
     minNewExpectationSeconds: 10
-    maxNewExpectationSeconds: 30
+    maxNewExpectationSeconds: 20
     stepIndex: 0
   - pointsToReach: 200
     expectations: 02000000040000000300000001000000

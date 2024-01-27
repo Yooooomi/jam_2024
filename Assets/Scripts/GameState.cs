@@ -27,6 +27,11 @@ public class GameState : MonoBehaviour
 
     private Dictionary<int, PlayerGameState> players = new Dictionary<int, PlayerGameState>();
 
+    public bool gameStarted {
+        get;
+        private set;
+    } = false;
+
     private void Awake()
     {
         instance = this;
@@ -100,6 +105,7 @@ public class GameState : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         onGameReadyCountdownChanged.Invoke(1);
         yield return new WaitForSecondsRealtime(1f);
+        gameStarted = true;
         onGameStarted.Invoke();
     }
 

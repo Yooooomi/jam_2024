@@ -18,8 +18,11 @@ public class GamePoints : MonoBehaviour
         public int meetKingExpectationMultiplicator;
     }
 
-        private void AddPlayerPoint(PlayerGameState player, int points, KingExpectationType kingExpectationType, int playerBullied = 0)
+    private void AddPlayerPoint(PlayerGameState player, int points, KingExpectationType kingExpectationType, int playerBullied = 0)
     {
+        if (!GameState.instance.gameStarted) {
+            return;
+        }
         if (kingExpectationType == kingLifecycle.currentKingExpectation &&
             (kingExpectationType != KingExpectationType.FocusPlayer || playerBullied == kingLifecycle.focusedPlayerId))
         {
