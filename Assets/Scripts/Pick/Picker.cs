@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Picker : MonoBehaviour
@@ -53,10 +55,23 @@ public class Picker : MonoBehaviour
         currentlyPicked = nearestPickable;
     }
 
+    private IEnumerator ReenableCollisions(List<Collider2D> colliders) {
+        yield return new WaitForSecondsRealtime(.5f);
+        colliders.ForEach(e => {
+            if (e.IsDestroyed()) {
+                return;
+            }
+            Physics2D.IgnoreCollision(myCollider, e, false);
+        });
+    }
+
     private void ReleaseCurrentlyPicked() {
+        List<Collider2D> effectiveColliders = currentlyPicked.effectiveColliders;
+        effectiveColliders.ForEach(e => Physics2D.IgnoreCollision(myCollider, e, true));
         currentlyPicked.Release(Mathf.Clamp01(Time.time - startedThrowingAt) / timeToMaxThrowPower);
         currentlyPicked = null;
         startedThrowingAt = -1;
+        StartCoroutine(ReenableCollisions(effectiveColliders));
     }
 
     public bool IsHolding() {

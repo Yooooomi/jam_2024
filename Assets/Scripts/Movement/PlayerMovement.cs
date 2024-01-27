@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody2d.MovePosition(Time.deltaTime * movement + new Vector2(transform.position.x, transform.position.y));
 
         if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.y) > 0) {
-            lookingDirection = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg - 90.0f));
+            lookingDirection = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg));
         }
     }
 }

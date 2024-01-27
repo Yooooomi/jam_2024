@@ -271,6 +271,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 7712604070969522156}
+  onPick:
+    m_PersistentCalls:
+      m_Calls: []
+  effectiveColliders:
+  - {fileID: 2523782604855346793}
+  - {fileID: 4255960181151421882}
   speedCurve:
     serializedVersion: 2
     m_Curve:
