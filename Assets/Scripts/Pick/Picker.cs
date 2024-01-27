@@ -7,6 +7,8 @@ using UnityEngine;
 public class Picker : MonoBehaviour
 {
     private Collider2D myCollider;
+    [SerializeField]
+    private PlayerPickable ownPickable;
     private Pickable currentlyPicked;
     private PlayerControls controls;
     private float startedThrowingAt = -1;
@@ -14,6 +16,9 @@ public class Picker : MonoBehaviour
     private bool wasHittingPickButton;
     [SerializeField]
     private List<Collider2D> unpickableColliders;
+    [SerializeField]
+    private  float releaseThenPickCooldown;
+    private float lastTimeReleased;
 
     private void Start()
     {
@@ -22,6 +27,9 @@ public class Picker : MonoBehaviour
     }
 
     private void PickNearest() {
+        if (lastTimeReleased + releaseThenPickCooldown >= Time.time) {
+            return;
+        }
         List<Collider2D> results = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D().NoFilter();
         filter.useTriggers = true;
@@ -66,6 +74,7 @@ public class Picker : MonoBehaviour
     }
 
     private void ReleaseCurrentlyPicked() {
+        lastTimeReleased = Time.time;
         List<Collider2D> effectiveColliders = currentlyPicked.effectiveColliders;
         effectiveColliders.ForEach(e => Physics2D.IgnoreCollision(myCollider, e, true));
         currentlyPicked.Release(Mathf.Clamp01(Time.time - startedThrowingAt) / timeToMaxThrowPower);
@@ -91,6 +100,10 @@ public class Picker : MonoBehaviour
 
     private void Update()
     {
+        if (ownPickable.IsBeingPicked() || ownPickable.IsBeingThrown()) {
+            return;
+        }
+
         if (!wasHittingPickButton && controls.picking && IsHolding()) {
             startedThrowingAt = Time.time;
         }

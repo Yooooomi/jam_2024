@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Armor : MonoBehaviour
@@ -35,7 +32,7 @@ public class Armor : MonoBehaviour
             return;
         }
         ThrowablePickable throwable = collider.GetComponentInChildren<ThrowablePickable>();
-        if (!throwable.IsBeingThrow())
+        if (!throwable.IsBeingThrown())
         {
             return;
         }

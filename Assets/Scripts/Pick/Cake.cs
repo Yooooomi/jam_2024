@@ -10,7 +10,7 @@ public class Cake : MonoBehaviour
 
     private void Update()
     {
-        if (throwablePicker.IsBeingThrow())
+        if (throwablePicker.IsBeingThrown())
         {
             Vector2 throwDirection = throwablePicker.GetFrameThrow();
             root.position += new Vector3(throwDirection.x, throwDirection.y, 0) * Time.deltaTime;

@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         }
     
         Vector2 movement;
-        if (throwable.IsBeingThrow()) {
+        if (throwable.IsBeingThrown()) {
             movement = throwable.GetFrameThrow();
         } else {
             movement = new Vector2(controls.direction.x, controls.direction.y) * moveSpeed * speedModifier.getValue();

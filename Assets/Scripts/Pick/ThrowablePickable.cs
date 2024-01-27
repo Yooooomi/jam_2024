@@ -25,7 +25,7 @@ public class ThrowablePickable : OverheadPickable
         return true;
     }
 
-    public bool IsBeingThrow()
+    public bool IsBeingThrown()
     {
         return HasBeenThrown() && thrownAt + travelTime > Time.time;
     }
@@ -35,14 +35,14 @@ public class ThrowablePickable : OverheadPickable
         return thrownAt > -100;
     }
 
-    public float StopThrow()
+    public void StopThrow()
     {
-        return thrownAt = -99;
+        thrownAt = -99;
     }
 
     public Vector2 GetFrameThrow()
     {
-        if (!IsBeingThrow())
+        if (!IsBeingThrown())
         {
             return Vector2.zero;
         }
