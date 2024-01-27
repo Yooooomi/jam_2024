@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class ArmorSpawner : ObjectSpawner
 {
-    protected new void Update() {
+    protected override void Update() {
         base.Update();
         if (itemIsPresent && spawnedGameObject.IsDestroyed()) {
             OnObjectUsed();
         }
-
     }
 }

@@ -54,7 +54,6 @@ public class Picker : MonoBehaviour
     }
 
     private void ReleaseCurrentlyPicked() {
-        Debug.Log("ReleaseCurrentlyPicked");
         currentlyPicked.Release();
         currentlyPicked = null;
     }
