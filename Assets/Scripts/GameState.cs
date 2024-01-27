@@ -4,9 +4,18 @@ using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
 
+public enum KingExpectationType
+{
+    Unspecified,
+    FocusPlayer,
+    Juggle,
+    ThrowInArmor,
+    CakeFlyingAround,
+}
+
 public class GameState : MonoBehaviour
 {
-    public class GameReadyCountdownChangeEvent : UnityEvent<int> {}
+    public class GameReadyCountdownChangeEvent : UnityEvent<int> { }
 
     public static GameState instance;
     [HideInInspector]
@@ -21,68 +30,150 @@ public class GameState : MonoBehaviour
     public UnityEvent onGameStarted = new UnityEvent();
     private Coroutine gameStartCoroutine;
 
-    private class PlayerState {
+    [SerializeField]
+    private PointsSystem pointsSystem;
+
+    [System.Serializable]
+    private struct PointsSystem
+    {
+        public float juggle;
+        public float throwPlayer;
+        public float throwPlayerInArmor;
+        public float foodThrow;
+        public float foodThrowHit;
+        public float meetKingExpectationMultiplicator;
+
+    }
+
+    private class PlayerState
+    {
         private bool ready;
-        
-        public PlayerState() {
+
+        public float points = 0;
+
+        public void AddPoints(float toAdd)
+        {
+            points += toAdd;
+        }
+
+        public PlayerState()
+        {
             ready = false;
         }
 
-        public void Ready() {
+        public void Ready()
+        {
             ready = true;
         }
 
-        public void Unready() {
+        public void Unready()
+        {
             ready = false;
         }
 
-        public bool IsReady() {
+        public bool IsReady()
+        {
             return ready;
         }
     }
 
     private Dictionary<int, PlayerState> players = new Dictionary<int, PlayerState>();
+    private KingExpectationType currentKingExpectation = KingExpectationType.Unspecified;
+    int focusedPlayerId = 0;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
-    public void AddPlayer(Transform transform) {
+    private void AddPlayerPoint(PlayerState player, float points, KingExpectationType kingExpectationType, int playerBullied = 0)
+    {
+        if (kingExpectationType == currentKingExpectation &&
+            (kingExpectationType != KingExpectationType.FocusPlayer || playerBullied == focusedPlayerId))
+        {
+            points *= pointsSystem.meetKingExpectationMultiplicator;
+        }
+        player.AddPoints(points);
+    }
+
+    public void RegisterJuggle(Transform player)
+    {
+        AddPlayerPoint(GetPlayerState(player), pointsSystem.juggle, KingExpectationType.Juggle);
+    }
+
+    public void RegisterFoodThrow(Transform throwBy)
+    {
+        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.foodThrow, KingExpectationType.CakeFlyingAround);
+    }
+
+    public void RegisterFoodThrowHit(Transform throwBy, Transform hit)
+    {
+        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.foodThrowHit, KingExpectationType.CakeFlyingAround);
+    }
+
+    public void RegisterPlayerThrow(Transform throwBy, Transform throwWho)
+    {
+        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.throwPlayer, KingExpectationType.FocusPlayer, throwWho.GetInstanceID());
+    }
+
+    public void RegisterPlayerInArmor(Transform throwBy, Transform playerBullied)
+    {
+        AddPlayerPoint(GetPlayerState(throwBy), pointsSystem.throwPlayerInArmor, KingExpectationType.FocusPlayer, playerBullied.GetInstanceID());
+    }
+
+    public void AddPlayer(Transform transform)
+    {
         int id = transform.GetInstanceID();
         players[id] = new PlayerState();
         onPlayerCountChange.Invoke();
     }
 
-    public void RemovePlayer(Transform transform) {
+    public void RemovePlayer(Transform transform)
+    {
         int id = transform.GetInstanceID();
         players.Remove(id);
         onPlayerCountChange.Invoke();
     }
 
-    public void ReadyPlayer(Transform transform) {
+    private PlayerState GetPlayerState(Transform transform)
+    {
+        if (!players.ContainsKey(transform.GetInstanceID()))
+        {
+            Debug.LogError("Invalid player transform, not registered");
+            return new PlayerState();
+        }
+        return players[transform.GetInstanceID()];
+    }
+
+    public void ReadyPlayer(Transform transform)
+    {
         PlayerState state = players[transform.GetInstanceID()];
         state.Ready();
         onPlayerReady.Invoke();
         CheckAllPlayersReady();
     }
 
-    public void UnreadyPlayer(Transform transform) {
+    public void UnreadyPlayer(Transform transform)
+    {
         PlayerState state = players[transform.GetInstanceID()];
         onPlayerUnready.Invoke();
         state.Unready();
     }
 
-    public int CountPlayers() {
+    public int CountPlayers()
+    {
         return players.Values.Count;
     }
 
-    public int CountReadyPlayers() {
+    public int CountReadyPlayers()
+    {
         int nbReady = players.Values.Count(e => e.IsReady());
 
         return nbReady;
     }
 
-    private IEnumerator startGameCountdown() {
+    private IEnumerator startGameCountdown()
+    {
         onGameReadyCountdownChanged.Invoke(3);
         yield return new WaitForSecondsRealtime(1f);
         onGameReadyCountdownChanged.Invoke(2);
@@ -92,23 +183,30 @@ public class GameState : MonoBehaviour
         onGameStarted.Invoke();
     }
 
-    private void ReadyGame() {
+    private void ReadyGame()
+    {
         gameStartCoroutine = StartCoroutine(startGameCountdown());
     }
 
-    private void UnreadyGame() {
-        if (gameStartCoroutine != null) {
+    private void UnreadyGame()
+    {
+        if (gameStartCoroutine != null)
+        {
             StopCoroutine(gameStartCoroutine);
             gameStartCoroutine = null;
         }
     }
 
-    private void CheckAllPlayersReady() {
+    private void CheckAllPlayersReady()
+    {
         bool allReady = CountReadyPlayers() == players.Count;
 
-        if (!allReady) {
+        if (!allReady)
+        {
             UnreadyGame();
-        } else {
+        }
+        else
+        {
             ReadyGame();
         }
     }

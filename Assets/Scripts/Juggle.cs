@@ -29,6 +29,7 @@ public class Juggle : MonoBehaviour
             jugglingLeftTime -= Time.deltaTime;
             if (jugglingLeftTime <= 0.0f)
             {
+                GameState.instance.RegisterJuggle(transform);
                 StopJuggle();
             }
         }

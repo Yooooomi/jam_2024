@@ -9,10 +9,11 @@ public class ThrowablePickable : OverheadPickable
     public float baseThrowSpeed;
     public float throwPowerSpeedMultiplier;
     private float thrownPower;
+    public Transform oldHolder;
 
     protected override bool ReactToRelease(float power)
     {
-        Transform oldHolder = currentHolder;
+        oldHolder = currentHolder;
         bool isLaunched = base.ReactToRelease(power);
         if (!isLaunched)
         {
