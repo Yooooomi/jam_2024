@@ -54,6 +54,7 @@ public class GameState : MonoBehaviour
     public GameReadyCountdownChangeEvent onGameReadyCountdownChanged = new GameReadyCountdownChangeEvent();
     [HideInInspector]
     public UnityEvent onGameStarted = new UnityEvent();
+    public UnityEvent onGameEnd = new UnityEvent();
     private Coroutine gameStartCoroutine;
 
     private Dictionary<int, PlayerState> players = new Dictionary<int, PlayerState>();
@@ -68,6 +69,19 @@ public class GameState : MonoBehaviour
         int id = transform.GetInstanceID();
         players[id] = new PlayerState();
         onPlayerCountChange.Invoke();
+    }
+
+    public int GetPlayerIdWithMostPoint()
+    {
+        if (players.Count == 0) {
+            Debug.LogError("Calling GetPlayerIdWithMostPoint but no player are available");
+            return 0;
+        }
+        return players.OrderByDescending(p => p.Value.points).First().Key;
+    }
+
+    public int GetTotalPoints() {
+        return (int)players.Sum(p => p.Value.points);
     }
 
     public void RemovePlayer(Transform transform)

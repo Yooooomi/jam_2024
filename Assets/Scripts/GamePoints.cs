@@ -53,5 +53,4 @@ public class GamePoints : MonoBehaviour
     {
         AddPlayerPoint(GameState.instance.GetPlayerState(throwBy), pointsSystem.throwPlayerInArmor, KingExpectationType.FocusPlayer, playerBullied.GetInstanceID());
     }
-
 }

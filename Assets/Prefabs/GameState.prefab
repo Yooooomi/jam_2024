@@ -60,6 +60,9 @@ MonoBehaviour:
   onGameStarted:
     m_PersistentCalls:
       m_Calls: []
+  onGameEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8990117128420888885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,8 +75,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddeb861f9481094db5b295011305028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentKingExpectation: 0
-  focusedPlayerId: 0
+  gamePoints: {fileID: 625966546023393171}
+  kingSteps:
+  - pointsToReach: 100
+    expectations: 0200000004000000
+    minNewExpectationSeconds: 10
+    maxNewExpectationSeconds: 30
+  - pointsToReach: 200
+    expectations: 02000000040000000300000001000000
+    minNewExpectationSeconds: 10
+    maxNewExpectationSeconds: 20
+  - pointsToReach: 300
+    expectations: 010000000400000003000000
+    minNewExpectationSeconds: 10
+    maxNewExpectationSeconds: 20
 --- !u!114 &625966546023393171
 MonoBehaviour:
   m_ObjectHideFlags: 0
