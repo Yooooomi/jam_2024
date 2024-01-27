@@ -30,11 +30,13 @@ public class KingLifecycle : MonoBehaviour
 {
     public GamePoints gamePoints;
 
-    public KingExpectationType currentKingExpectation {
+    public KingExpectationType currentKingExpectation
+    {
         get;
         private set;
     } = KingExpectationType.Unspecified;
-    public int focusedPlayerId {
+    public int focusedPlayerId
+    {
         get;
         private set;
     } = 0;
@@ -91,6 +93,7 @@ public class KingLifecycle : MonoBehaviour
         {
             focusedPlayerId = GameState.instance.GetPlayerIdWithMostPoint();
         }
+        kingExpectationChangeEvent.Invoke(new KingExpectationChangeEventArguments() { expectationType = currentKingExpectation, focusedPlayerId = focusedPlayerId });
     }
 
     void Update()
@@ -99,7 +102,8 @@ public class KingLifecycle : MonoBehaviour
         {
             return;
         }
-        if (GameState.instance.GetTotalPoints() >= GetCurrentKingStep().pointsToReach) {
+        if (GameState.instance.GetTotalPoints() >= GetCurrentKingStep().pointsToReach)
+        {
             NextKingStep();
             return;
         }
@@ -112,12 +116,12 @@ public class KingLifecycle : MonoBehaviour
 
     public bool HaveActiceKingStep()
     {
-        return currentKingStep == -1 || currentKingStep >= kingSteps.Count;
+        return currentKingStep >= 0 && currentKingStep < kingSteps.Count;
     }
 
     public KingStep GetCurrentKingStep()
     {
-        if (currentKingStep == -1 || currentKingStep >= kingSteps.Count)
+        if (!HaveActiceKingStep())
         {
             Debug.LogError("Calling GetCurrentKingStep despite non are active");
             return new KingStep();
