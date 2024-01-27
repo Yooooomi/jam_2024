@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,8 @@ public abstract class Pickable : MonoBehaviour
     protected Transform root;
     public UnityEvent onPick = new UnityEvent();
     protected Transform currentHolder;
+    [SerializeField]
+    public List<Collider2D> effectiveColliders = new List<Collider2D>();
 
     public bool CanBePicked()
     {

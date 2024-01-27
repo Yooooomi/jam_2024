@@ -18,7 +18,7 @@ public class ThrowablePickable : OverheadPickable
         {
             return false;
         }
-        direction = oldHolder.rotation;
+        direction = oldHolder.GetComponent<PlayerMovement>().lookingDirection;
         thrownAt = Time.time;
         thrownPower = baseThrowSpeed + baseThrowSpeed * throwPowerSpeedMultiplier * power;
         return true;
