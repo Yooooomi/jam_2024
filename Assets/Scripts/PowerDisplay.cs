@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class PowerDisplay : MonoBehaviour
 {
     [SerializeField]
-    private Slider slider;
+    private Transform shootArrow;
     [SerializeField]
-    private Image sliderFillImage;
+    private Image shootArrowImage;
     [SerializeField]
     private Color startColor;
     [SerializeField]
@@ -15,22 +15,25 @@ public class PowerDisplay : MonoBehaviour
     private Color endColor;
     
 
-    public void Show() {
-        slider.gameObject.SetActive(true);
+    public void ShowDirection() {
+        shootArrow.gameObject.SetActive(true);
     }
 
-    public void Hide() {
-        slider.gameObject.SetActive(false);
+    public void HideDirection() {
+        shootArrow.gameObject.SetActive(false);
     }
 
     public void SetPower(float power) {
-        slider.value = power;
         Color powerColor;
         if (power < .5f) {
             powerColor = Color.Lerp(startColor, middleColor, power * 2);
         } else {
             powerColor = Color.Lerp(middleColor, endColor, (power - .5f) * 2);
         }
-        sliderFillImage.color = powerColor;
+        shootArrowImage.color = powerColor;
+    }
+
+    public void SetShootDirection(Quaternion angle) {
+        shootArrow.localRotation = angle;
     }
 }
