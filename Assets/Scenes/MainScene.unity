@@ -559,10 +559,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 625966546023393171, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
-      propertyPath: pointsSystem.juggle
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 1259353214042313408, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -607,6 +603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameState
       objectReference: {fileID: 0}
+    - target: {fileID: 8823690990824344399, guid: 800fe1fc9ea928843b1b4d77c798c160, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1652797843}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

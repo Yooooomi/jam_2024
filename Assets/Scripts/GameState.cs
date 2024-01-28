@@ -23,6 +23,10 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public UnityEvent onGameStarted = new UnityEvent();
     public UnityEvent onGameEnd = new UnityEvent();
+    public bool gameIsEnded {
+        get;
+        private set;
+    } = false;
     private Coroutine gameStartCoroutine;
 
     public Dictionary<int, PlayerGameState> players
@@ -40,6 +44,11 @@ public class GameState : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        onGameEnd.AddListener(OnGameEnd);
+    }
+
+    void OnGameEnd() {
+        gameIsEnded = true;
     }
 
     public void AddPlayer(PlayerGameState playerGameState)
