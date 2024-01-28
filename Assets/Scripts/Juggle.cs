@@ -15,11 +15,13 @@ public class Juggle : MonoBehaviour
         private set;
     }
     private SpeedDot infiniteDot;
+    private SpeedDot initialJuggleDot;
 
     private void StartToJuggle()
     {
         isJuggling = true;
-        playerSpeedModifier.ApplyDot(new SpeedDot(juggleDuration, .0f));
+        initialJuggleDot = new SpeedDot(juggleDuration, .0f);
+        playerSpeedModifier.ApplyDot(initialJuggleDot);
     }
 
     private void ContinueJuggling()
@@ -36,6 +38,7 @@ public class Juggle : MonoBehaviour
     {
         isJuggling = false;
         jugglingTime = 0f;
+        playerSpeedModifier.CancelDot(initialJuggleDot);
         if (infiniteDot != null)
         {
             playerSpeedModifier.CancelDot(infiniteDot);

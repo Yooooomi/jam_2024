@@ -82,6 +82,10 @@ public class KingLifecycle : MonoBehaviour
         NextExpectation();
     }
 
+    void EmitKingExpectationEvent() {
+            kingExpectationChangeEvent.Invoke(new KingExpectationChangeEventArguments() { expectationType = currentKingExpectation, focusedPlayerId = focusedPlayerId });
+    }
+
     void ClearExpectation()
     {
         currentKingExpectation = KingExpectationType.Unspecified;
@@ -96,7 +100,7 @@ public class KingLifecycle : MonoBehaviour
         KingExpectationType oldKingExpectation = currentKingExpectation;
         ClearExpectation();
         KingStep activeKingStep = GetCurrentKingStep();
-        List<KingExpectationType> eligibleExpectation  = activeKingStep.expectations.Where(e => e != oldKingExpectation).ToList();
+        List<KingExpectationType> eligibleExpectation = activeKingStep.expectations.Where(e => e != oldKingExpectation).ToList();
         currentKingExpectation = eligibleExpectation[Random.Range(0, eligibleExpectation.Count)];
         if (currentKingExpectation == KingExpectationType.FocusPlayer)
         {
@@ -119,7 +123,15 @@ public class KingLifecycle : MonoBehaviour
         timeForNewExpectation -= Time.deltaTime;
         if (timeForNewExpectation <= 0)
         {
-            NextExpectation();
+            if (currentKingExpectation == KingExpectationType.Unspecified)
+            {
+                NextExpectation();
+            }
+            else
+            {
+                ClearExpectation();
+            }
+            EmitKingExpectationEvent();
         }
     }
 

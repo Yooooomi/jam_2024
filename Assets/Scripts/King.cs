@@ -53,13 +53,13 @@ public class King : MonoBehaviour
         bool haveExpectation = args.expectationType != KingExpectationType.Unspecified;
         bubbleAnimator.SetBool("HaveExpectation", haveExpectation);
         bubbleAnimator.SetTrigger("ChangeExpectation");
+        expectationSpriteRenderer.enabled = false;
 
         if (!haveExpectation)
         {
             return;
         }
 
-        expectationSpriteRenderer.enabled = false;
         SpriteWithExpectation spriteWithExpectation = spriteWithExpectations.Find(e => e.expectation == args.expectationType);
         expectationSpriteRenderer.sprite = spriteWithExpectation.sprite;
         expectationSpriteRenderer.transform.localScale = spriteWithExpectation.scale;
