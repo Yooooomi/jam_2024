@@ -192,6 +192,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3205639125574588927, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
+      propertyPath: slowEfficiency
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5437294051195665284, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
       propertyPath: m_Name
       value: Cake

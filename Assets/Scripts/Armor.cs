@@ -38,6 +38,7 @@ public class Armor : MonoBehaviour
         }
         throwable.StopThrow();
         collider.GetComponent<SpeedModifier>().ApplyDot(new SpeedDot(stunDuration, 0));
+        collider.GetComponent<JuggleModifier>().ApplyDot(new JuggleDot(stunDuration));
         playerTrap = true;
         playerStunLeft = stunDuration;
         GameState.instance.gamePoints.RegisterPlayerInArmor(throwable.oldHolder, collider.transform);
