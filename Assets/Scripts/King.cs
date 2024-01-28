@@ -11,6 +11,7 @@ public class King : MonoBehaviour
         public KingExpectationType expectation;
         public Sprite sprite;
         public Vector2 scale;
+        public Vector2 offset;
     }
 
     [SerializeField]
@@ -44,7 +45,8 @@ public class King : MonoBehaviour
         expectationSpriteRenderer.enabled = true;
     }
 
-    void OnKingStepChange(KingStep kingStep) {
+    void OnKingStepChange(KingStep kingStep)
+    {
         kingAnimator.SetInteger("step", kingStep.stepIndex);
     }
 
@@ -61,7 +63,15 @@ public class King : MonoBehaviour
         }
 
         SpriteWithExpectation spriteWithExpectation = spriteWithExpectations.Find(e => e.expectation == args.expectationType);
-        expectationSpriteRenderer.sprite = spriteWithExpectation.sprite;
+        if (args.expectationType == KingExpectationType.FocusPlayer)
+        {
+            expectationSpriteRenderer.sprite = GameState.instance.GetPlayerColors(args.focusedPlayerId);
+        }
+        else
+        {
+            expectationSpriteRenderer.sprite = spriteWithExpectation.sprite;
+        }
         expectationSpriteRenderer.transform.localScale = spriteWithExpectation.scale;
+        expectationSpriteRenderer.transform.localPosition = new Vector3(spriteWithExpectation.offset.x, spriteWithExpectation.offset.y, 0);
     }
 }

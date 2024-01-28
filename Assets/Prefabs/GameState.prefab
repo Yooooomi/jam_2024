@@ -681,6 +681,11 @@ MonoBehaviour:
       m_Calls: []
   cooldownTimeBeforeRestart: 5
   restartText: {fileID: 2591254733713055752}
+  playerColors:
+  - {fileID: 1078011191, guid: 570dd5819b4a5ed4dacfaf23cc1bf059, type: 3}
+  - {fileID: 388999329, guid: 31d67dbe5dc471c4687f72a4202d7511, type: 3}
+  - {fileID: 675227222, guid: ef0ad3fa4f46daf43a76493ddb177254, type: 3}
+  - {fileID: -1362334817, guid: f2914a9013b29f04d99cd1aea6e9e34c, type: 3}
 --- !u!114 &8990117128420888885
 MonoBehaviour:
   m_ObjectHideFlags: 0

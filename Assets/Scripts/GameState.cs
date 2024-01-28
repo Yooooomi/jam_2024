@@ -43,6 +43,9 @@ public class GameState : MonoBehaviour
         private set;
     } = new Dictionary<int, PlayerGameState>();
 
+    [SerializeField]
+    private Sprite[] playerColors;
+
     public bool gameStarted
     {
         get;
@@ -67,6 +70,10 @@ public class GameState : MonoBehaviour
         players[id] = playerGameState;
         onPlayerCountChange.Invoke();
         CheckAllPlayersReady();
+    }
+
+    public Sprite GetPlayerColors(int playerId) {
+        return playerColors[GetPlayerIndex(playerId)];
     }
 
     public int GetPlayerIndex(int id) {
