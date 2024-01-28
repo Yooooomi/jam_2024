@@ -5,14 +5,12 @@ using UnityEngine;
 public class King : MonoBehaviour
 {
 
-    [SerializeField]
-    private List<Sprite> spritePerStep;
-
     [System.Serializable]
     private struct SpriteWithExpectation
     {
         public KingExpectationType expectation;
         public Sprite sprite;
+        public Vector2 scale;
     }
 
     [SerializeField]
@@ -47,10 +45,6 @@ public class King : MonoBehaviour
     }
 
     void OnKingStepChange(KingStep kingStep) {
-        if (spritePerStep.Count <= kingStep.stepIndex) {
-            Debug.LogError("OnKingStepChange King.cs do not have enough sprite");
-            return;
-        }
         kingAnimator.SetInteger("step", kingStep.stepIndex);
     }
 
@@ -68,5 +62,6 @@ public class King : MonoBehaviour
         expectationSpriteRenderer.enabled = false;
         SpriteWithExpectation spriteWithExpectation = spriteWithExpectations.Find(e => e.expectation == args.expectationType);
         expectationSpriteRenderer.sprite = spriteWithExpectation.sprite;
+        expectationSpriteRenderer.transform.localScale = spriteWithExpectation.scale;
     }
 }
