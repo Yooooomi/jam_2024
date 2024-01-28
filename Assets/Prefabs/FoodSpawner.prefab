@@ -46,5 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn:
   - {fileID: 5437294051195665284, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
+  - {fileID: 4691259255226854229, guid: cea0782ff1607f3489b074a1f0f83c5e, type: 3}
+  - {fileID: 8915971815207845378, guid: de99a5d6105c8ab4da68ee990e1a043d, type: 3}
   maxDelayBetweenPickupAndSpawn: 10
   minDelayBetweenPickupAndSpawn: 1
+  spawnAtStart: 0
+  rotateSpawnedObjectZ: 0
