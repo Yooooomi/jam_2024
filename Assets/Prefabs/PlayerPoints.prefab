@@ -261,6 +261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd417396eca5d0c44896cfb2a5403532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpriteRenderer: {fileID: 3719495432491744878}
+  playerColors:
+  - {fileID: 1078011191, guid: 570dd5819b4a5ed4dacfaf23cc1bf059, type: 3}
+  - {fileID: 388999329, guid: 31d67dbe5dc471c4687f72a4202d7511, type: 3}
+  - {fileID: 675227222, guid: ef0ad3fa4f46daf43a76493ddb177254, type: 3}
+  - {fileID: -1362334817, guid: f2914a9013b29f04d99cd1aea6e9e34c, type: 3}
   pointText: {fileID: 6719669742885707225}
 --- !u!1 &4604155269946750626
 GameObject:

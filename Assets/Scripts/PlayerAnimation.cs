@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteResolver resolver;
     [SerializeField]
     private Dictionary<string, float> intervals = new Dictionary<string, float>();
-    private Dictionary<string, string[]> counts = new Dictionary<string, string[]>();
+    private Dictionary<string, string[]> categoriesToLabels = new Dictionary<string, string[]>();
     
     private string category = "idle_down";
     private int index = 0;
@@ -38,14 +38,14 @@ public class PlayerAnimation : MonoBehaviour
         resolver = GetComponent<SpriteResolver>();
         SpriteLibraryAsset library = resolver.spriteLibrary.spriteLibraryAsset;
         foreach (var i in library.GetCategoryNames()) {
-            counts[i] = library.GetCategoryLabelNames(i).ToArray();
+            categoriesToLabels[i] = library.GetCategoryLabelNames(i).ToArray();
         }
     }
 
     private void Start() {
         int myIndex = GameState.instance.GetPlayerIndex(root.gameObject.GetInstanceID());
         resolver.spriteLibrary.spriteLibraryAsset = colors[myIndex];
-        SetAnimationName(category);
+        resolver.SetCategoryAndLabel(category, categoriesToLabels[category][0]);
     }
 
     private bool CompareCurrentAnimation(string anim) {
@@ -60,7 +60,7 @@ public class PlayerAnimation : MonoBehaviour
         category = animationName;
         index = 0;
 
-        string[] labels = counts[category];
+        string[] labels = categoriesToLabels[category];
         string label = labels[index];
         resolver.SetCategoryAndLabel(category, label);
         float interval = intervals[category];
@@ -71,7 +71,7 @@ public class PlayerAnimation : MonoBehaviour
         if (Time.time < nextChange) {
             return;
         }
-        string[] labels = counts[category];
+        string[] labels = categoriesToLabels[category];
         index = (index + 1) % labels.Length;
         string label = labels[index];
         resolver.SetCategoryAndLabel(category, label);
