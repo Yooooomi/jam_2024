@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public abstract class Pickable : MonoBehaviour
 {
+    static protected float DroppedPower = -1f;
+
     [SerializeField]
     public float speedDotValue = 1.0f;
 
@@ -40,6 +42,11 @@ public abstract class Pickable : MonoBehaviour
     public void Release(float power)
     {
         ReactToRelease(power);
+        currentHolder = null;
+    }
+
+    public void Drop() {
+        ReactToRelease(DroppedPower);
         currentHolder = null;
     }
 }
