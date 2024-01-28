@@ -16,6 +16,7 @@ public struct KingExpectationChangeEventArguments
 {
     public KingExpectationType expectationType;
     public int focusedPlayerId;
+
 }
 
 [System.Serializable]
