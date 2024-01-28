@@ -24,7 +24,7 @@ public class Armor : MonoBehaviour
 
     void OnTrapReleased()
     {
-        playerTrapped.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        playerTrapped.GetComponent<PlayerToogleVisibility>().SetPlayerVisibility(true);
         Destroy(gameObject);
     }
 
@@ -46,7 +46,7 @@ public class Armor : MonoBehaviour
         playerStunLeft = stunDuration;
         GameState.instance.gamePoints.RegisterPlayerInArmor(throwable.oldHolder, collider.transform);
         playerTrapped.GetComponent<PlayerMovement>().SetPos(transform.position);
-        playerTrapped.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        playerTrapped.GetComponent<PlayerToogleVisibility>().SetPlayerVisibility(false);
         animator.SetBool("playerTrap", true);
     }
 }

@@ -620,10 +620,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2712440086344347901, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
-      propertyPath: cooldownTimeBeforeRestart
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3432442145703568599, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7709734
@@ -961,6 +957,10 @@ PrefabInstance:
     - target: {fileID: 4860465483489858466, guid: a32b2f3f1d3e85e49ae8a067f834f9f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304110394117691360, guid: a32b2f3f1d3e85e49ae8a067f834f9f4, type: 3}
+      propertyPath: spawnAtStart
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
