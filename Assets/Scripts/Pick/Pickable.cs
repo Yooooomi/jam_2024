@@ -5,6 +5,9 @@ using UnityEngine.Events;
 public abstract class Pickable : MonoBehaviour
 {
     [SerializeField]
+    public float speedDotValue = 1.0f;
+
+    [SerializeField]
     protected Transform root;
     public UnityEvent onPick = new UnityEvent();
     protected Transform currentHolder;

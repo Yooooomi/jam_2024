@@ -33,6 +33,12 @@ public class Cake : MonoBehaviour
 
         GameState.instance.gamePoints.RegisterFoodThrowHit(throwablePicker.oldHolder, collider.transform);
         speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
+
+        Juggle juggle = collider.GetComponent<Juggle>();
+        if (juggle) {
+            juggle.StopJuggle();
+        }
+
         Destroy(root.gameObject);
     }
 }

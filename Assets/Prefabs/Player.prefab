@@ -5353,6 +5353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78609163274387479df6d2e7b520e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedDotValue: 0.3
   root: {fileID: 3432442145703568599}
   onPick:
     m_PersistentCalls:
@@ -5388,6 +5389,7 @@ MonoBehaviour:
   throwPowerSpeedMultiplier: 0.8
   oldHolder: {fileID: 0}
   playerRigidbody: {fileID: 3695878217961359432}
+  juggleModifier: {fileID: 2396026088091686674}
 --- !u!1 &8191930911488095691
 GameObject:
   m_ObjectHideFlags: 0
@@ -5412,6 +5414,7 @@ GameObject:
   - component: {fileID: 8894653688241056825}
   - component: {fileID: 5071214757414502588}
   - component: {fileID: 2910453592682416585}
+  - component: {fileID: 2396026088091686674}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5556,6 +5559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fc9930799d68f47a8ed6c4adf17615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  juggleModifier: {fileID: 2396026088091686674}
   playerSpeedModifier: {fileID: 4796238860036251162}
   playerControls: {fileID: 1995413801081972887}
   juggleDuration: 1
@@ -5597,6 +5601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownPickable: {fileID: 3362124492388513355}
+  speedModifier: {fileID: 4796238860036251162}
+  juggleModifier: {fileID: 2396026088091686674}
   timeToMaxThrowPower: 1.5
   unpickableColliders:
   - {fileID: 3851614428958512702}
@@ -5698,7 +5704,7 @@ MonoBehaviour:
   - {x: 0.14173841, y: 0.105516315, z: 0}
   m_ShapePathHash: 45135585
   m_Mesh: {fileID: 0}
-  m_InstanceId: -501302
+  m_InstanceId: -263310
   m_LocalBounds:
     m_Center: {x: -0.024683237, y: 0.44185007, z: 0}
     m_Extent: {x: 0.37362838, y: 0.37599266, z: 0}
@@ -5729,6 +5735,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starsPerPointRatio: 5
   system: {fileID: 1750949221529237488}
+--- !u!114 &2396026088091686674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191930911488095691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddece0b1a426efd43b1344b269a0ba5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9004818094476244673
 GameObject:
   m_ObjectHideFlags: 0
