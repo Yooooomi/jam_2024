@@ -1,28 +1,47 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSprite : MonoBehaviour
 {
-    private Animator animator;
     [SerializeField]
     private PlayerMovement movement;
     [SerializeField]
     private Juggle juggle;
-
-    private void Start() {
-        animator = GetComponent<Animator>();
-    }
+    [SerializeField]
+    private PlayerPickable playerPickable;
+    [SerializeField]
+    private PlayerAnimation playerAnimation;
 
     private void Update() {
-        animator.SetBool("juggling", juggle.isJuggling);
-
         float rotation = movement.lookingDirection.eulerAngles.z;
+        int side = (int) ((rotation + 45f) / 90.0f);
 
-        int side = (int) (rotation / 90.0f);
+        bool inAir = playerPickable.IsBeingPicked() || playerPickable.IsBeingThrown();
 
-        int currentAnimationDirection = animator.GetInteger("direction");
-        if (side != currentAnimationDirection) {
-            animator.SetInteger("direction", side);
+        string strSide;
+
+        if (side == 0) {
+            strSide = "right";
+        } else if (side == 1) {
+            strSide = "up";
+        } else if (side == 2) {
+            strSide = "left";
+        } else {
+            strSide = "down";
         }
+
+        if (inAir) {
+            playerAnimation.SetAnimationName("idle_down");
+            return;
+        }
+        if (juggle.isJuggling) {
+            playerAnimation.SetAnimationName("juggle");
+            return;
+        }
+        
+        if (movement.currentSpeed == 0) {
+            strSide = $"idle_{strSide}";
+        }
+
+        playerAnimation.SetAnimationName(strSide);
     }
 }

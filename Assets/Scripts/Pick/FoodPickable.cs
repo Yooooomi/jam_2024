@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class FoodPickable : ThrowablePickable
 {
     protected override bool ReactToRelease(float power)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RegisterPlayerToGameState : MonoBehaviour
 {
-    private void Start() {
+    private void Awake() {
         GameState.instance.AddPlayer(GetComponent<PlayerGameState>());
     }
 }

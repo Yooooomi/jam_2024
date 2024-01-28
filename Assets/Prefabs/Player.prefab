@@ -493,7 +493,9 @@ GameObject:
   - component: {fileID: 7908566110296672923}
   - component: {fileID: 7477215821485721555}
   - component: {fileID: 2290758459719483422}
-  - component: {fileID: 2654627201139030019}
+  - component: {fileID: 1879373247766109225}
+  - component: {fileID: 7165719837411163579}
+  - component: {fileID: 4752782853615981329}
   m_Layer: 0
   m_Name: SpriteRenderer
   m_TagString: Untagged
@@ -557,7 +559,7 @@ SpriteRenderer:
   m_SortingLayerID: 1243786031
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -984364878, guid: 3966de93bd8ce694bbe97e02ac20fe7f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -565,7 +567,7 @@ SpriteRenderer:
   m_Size: {x: 8.06, y: 6.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2290758459719483422
@@ -582,27 +584,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1560123037209472733}
   juggle: {fileID: 6011718808665802133}
---- !u!95 &2654627201139030019
-Animator:
-  serializedVersion: 5
+  playerPickable: {fileID: 3362124492388513355}
+  playerAnimation: {fileID: 4752782853615981329}
+--- !u!114 &1879373247766109225
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6060913307451279973}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 52d3995137b2bec4a9fd1a33453dfc01, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: c3507d3118455ed4b808914e659e26ff, type: 3}
+--- !u!114 &7165719837411163579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6060913307451279973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 0
+--- !u!114 &4752782853615981329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6060913307451279973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867ea7a7af44d794b94c238259efc48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 3432442145703568599}
+  colors:
+  - {fileID: 7108339969198208228, guid: c3507d3118455ed4b808914e659e26ff, type: 3}
+  - {fileID: 7108339969198208228, guid: 27e501f7b7ddd7842baf4f2c6d3eeb6d, type: 3}
+  - {fileID: 7108339969198208228, guid: 69ecc192d634252449a7a07884156601, type: 3}
+  - {fileID: 7108339969198208228, guid: 91e1da4a063e2b74b85b9b5440b83415, type: 3}
+  intervalsArray:
+  - name: up
+    interval: 0.1
+  - name: down
+    interval: 0.1
+  - name: left
+    interval: 0.1
+  - name: right
+    interval: 0.1
+  - name: idle_up
+    interval: 0.3
+  - name: idle_down
+    interval: 0.3
+  - name: idle_left
+    interval: 0.3
+  - name: idle_right
+    interval: 0.3
+  - name: juggle
+    interval: 0.09
 --- !u!1 &6094518109882586764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1094,7 @@ MonoBehaviour:
   - {x: 0.14173841, y: 0.105516315, z: 0}
   m_ShapePathHash: 45135585
   m_Mesh: {fileID: 0}
-  m_InstanceId: -566418
+  m_InstanceId: -1700
   m_LocalBounds:
     m_Center: {x: -0.024683237, y: 0.44185007, z: 0}
     m_Extent: {x: 0.37362838, y: 0.37599266, z: 0}

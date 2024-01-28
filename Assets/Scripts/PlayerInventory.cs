@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetHead(Transform newHead) {
         newHead.SetParent(head);
-        newHead.localPosition = Vector3.zero;
+        newHead.localPosition = Vector3.forward;
         currentHead = newHead;
     }
 
@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
         }
         headToRemove.SetParent(null);
         currentHead = null;
+        headToRemove.transform.position = new Vector3(headToRemove.transform.position.x, headToRemove.transform.position.y, 0);
         return true;
     }
 }
