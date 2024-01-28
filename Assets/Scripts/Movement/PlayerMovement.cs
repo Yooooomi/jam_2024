@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5.0f;
     public Quaternion lookingDirection;
     public ThrowablePickable throwable;
+    public float currentSpeed {
+        get;
+        private set;
+    }
 
     private void Start()
     {
@@ -35,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             movement = new Vector2(controls.direction.x, controls.direction.y) * moveSpeed * speedModifier.getValue();
         }
     
+        currentSpeed = movement.magnitude * moveSpeed;
         rigidbody2d.MovePosition(Time.deltaTime * movement + new Vector2(transform.position.x, transform.position.y));
 
         if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.y) > 0) {

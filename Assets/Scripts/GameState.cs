@@ -68,6 +68,19 @@ public class GameState : MonoBehaviour
         onPlayerCountChange.Invoke();
     }
 
+    public int GetPlayerIndex(int id) {
+        int index = 0;
+        foreach (var item in players)
+        {
+            if (item.Key == id) {
+                return index;
+            }
+            index += 1;
+        }
+        Debug.LogWarning("Returning default player index");
+        return 0;
+    }
+
     public void RemovePlayer(PlayerGameState playerGameState)
     {
         int id = playerGameState.gameObject.GetInstanceID();
