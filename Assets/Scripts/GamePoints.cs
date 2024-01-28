@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GamePoints : MonoBehaviour
 {
+    public bool ignoreGameStarted;
     public KingLifecycle kingLifecycle;
 
     [SerializeField]
@@ -20,7 +21,7 @@ public class GamePoints : MonoBehaviour
 
     private void AddPlayerPoint(PlayerGameState player, int points, KingExpectationType kingExpectationType, int playerBullied = 0)
     {
-        if (!GameState.instance.gameStarted) {
+        if (!ignoreGameStarted && !GameState.instance.gameStarted) {
             return;
         }
         if (kingExpectationType == kingLifecycle.currentKingExpectation &&
