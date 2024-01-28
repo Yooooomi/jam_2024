@@ -4,10 +4,14 @@ public class PlayerPointFeedback : MonoBehaviour
 {
     private PlayerGameState playerGameState;
     [SerializeField]
-    private float starsPerPointRatio;
+    private float baseScale;
+    [SerializeField]
+    private float scalePerPoint;
     
     [SerializeField]
-    private ParticleSystem system;
+    private Transform star;
+    [SerializeField]
+    private Animator starHolderAnimator;
 
     private void Start() {
         playerGameState = GetComponent<PlayerGameState>();
@@ -15,7 +19,8 @@ public class PlayerPointFeedback : MonoBehaviour
     }
 
     public void Feedback(int points) {
-        int particleCount = (int) (points / starsPerPointRatio);
-        system.Emit(particleCount);
+        float finalScale = baseScale + scalePerPoint * points;
+        star.localScale = new Vector3(finalScale, finalScale, finalScale);
+        starHolderAnimator.SetTrigger("Feedback");
     }
 }

@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Back
+  - PropsBack
+  - Player
+  - PropsFront
+  - Ceiling
   - 
   - 
   - 
@@ -41,12 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Floor
-    uniqueID: 2112409615
+  - name: Back
+    uniqueID: 1434944323
     locked: 0
-  - name: Props
-    uniqueID: 3353369883
+  - name: PropsBack
+    uniqueID: 3373067245
     locked: 0
-  - name: Ceil
-    uniqueID: 2490820033
+  - name: Player
+    uniqueID: 1243786031
+    locked: 0
+  - name: PropsFront
+    uniqueID: 2307100921
+    locked: 0
+  - name: Ceiling
+    uniqueID: 596099099
+    locked: 0
+  - name: UI
+    uniqueID: 3440431267
     locked: 0
