@@ -30,7 +30,7 @@ public class ObjectSpawner : MonoBehaviour
 
     protected virtual void SpawnObject()
     {
-        GameObject toSpawn = itemToSpawn[Random.Range(0, itemToSpawn.Count - 1)];
+        GameObject toSpawn = itemToSpawn[Random.Range(0, itemToSpawn.Count)];
         Vector3 positionToSpawn = transform.TransformPoint(Vector3.zero);
         positionToSpawn.z = -1;
         spawnedGameObject = Instantiate(toSpawn, positionToSpawn, Quaternion.Euler(0, 0, rotateSpawnedObjectZ));

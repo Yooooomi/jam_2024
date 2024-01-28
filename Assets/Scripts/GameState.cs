@@ -66,6 +66,7 @@ public class GameState : MonoBehaviour
         int id = playerGameState.gameObject.GetInstanceID();
         players[id] = playerGameState;
         onPlayerCountChange.Invoke();
+        CheckAllPlayersReady();
     }
 
     public int GetPlayerIndex(int id) {
@@ -86,6 +87,7 @@ public class GameState : MonoBehaviour
         int id = playerGameState.gameObject.GetInstanceID();
         players.Remove(id);
         onPlayerCountChange.Invoke();
+        CheckAllPlayersReady();
     }
 
     public int GetPlayerIdWithMostPoint()
