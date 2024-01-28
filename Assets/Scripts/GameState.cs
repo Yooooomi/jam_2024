@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -23,10 +24,17 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public UnityEvent onGameStarted = new UnityEvent();
     public UnityEvent onGameEnd = new UnityEvent();
-    public bool gameIsEnded {
+    public bool gameIsEnded
+    {
         get;
         private set;
     } = false;
+    [SerializeField]
+    private float cooldownTimeBeforeRestart = 5;
+    private float endTime = 0;
+    [SerializeField]
+    private GameObject restartText;
+
     private Coroutine gameStartCoroutine;
 
     public Dictionary<int, PlayerGameState> players
@@ -47,8 +55,10 @@ public class GameState : MonoBehaviour
         onGameEnd.AddListener(OnGameEnd);
     }
 
-    void OnGameEnd() {
+    void OnGameEnd()
+    {
         gameIsEnded = true;
+        endTime = Time.time;
     }
 
     public void AddPlayer(PlayerGameState playerGameState)
@@ -150,6 +160,23 @@ public class GameState : MonoBehaviour
         else
         {
             ReadyGame();
+        }
+    }
+
+    private bool ReadyToRestart() {
+        return gameIsEnded && endTime + cooldownTimeBeforeRestart < Time.time;
+    }
+
+    void Update() {
+        if (ReadyToRestart() && !restartText.activeSelf) {
+            restartText.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        if (ReadyToRestart()) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
