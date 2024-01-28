@@ -7,8 +7,6 @@ public class King : MonoBehaviour
 
     [SerializeField]
     private List<Sprite> spritePerStep;
-    [SerializeField]
-    private SpriteRenderer kingStepSpriteRenderer;
 
     [System.Serializable]
     private struct SpriteWithExpectation
@@ -18,7 +16,10 @@ public class King : MonoBehaviour
     }
 
     [SerializeField]
-    private Animator animator;
+    private Animator bubbleAnimator;
+
+    [SerializeField]
+    private Animator kingAnimator;
 
     [SerializeField]
     private List<SpriteWithExpectation> spriteWithExpectations;
@@ -50,14 +51,14 @@ public class King : MonoBehaviour
             Debug.LogError("OnKingStepChange King.cs do not have enough sprite");
             return;
         }
-        kingStepSpriteRenderer.sprite = spritePerStep[kingStep.stepIndex];
+        kingAnimator.SetInteger("step", kingStep.stepIndex);
     }
 
     void OnKingExpectationChange(KingExpectationChangeEventArguments args)
     {
         bool haveExpectation = args.expectationType != KingExpectationType.Unspecified;
-        animator.SetBool("HaveExpectation", haveExpectation);
-        animator.SetTrigger("ChangeExpectation");
+        bubbleAnimator.SetBool("HaveExpectation", haveExpectation);
+        bubbleAnimator.SetTrigger("ChangeExpectation");
 
         if (!haveExpectation)
         {

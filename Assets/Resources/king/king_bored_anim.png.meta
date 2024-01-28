@@ -1,0 +1,373 @@
+fileFormatVersion: 2
+guid: 07ebeef4e3466bf40b79e5a7fbb6b0b7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: king_bored_anim_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1392
+        width: 732
+        height: 561
+      alignment: 9
+      pivot: {x: 0.07630482, y: 0.3807928}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7789583df6ea04e99b9476158e2b0f
+      internalID: -1945440694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_5
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1392
+        width: 733
+        height: 561
+      alignment: 9
+      pivot: {x: 0.07934371, y: 0.37993765}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2efd96234063e4eb0325f42ebec7e5
+      internalID: 1310062353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_6
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 1415
+        width: 731
+        height: 538
+      alignment: 9
+      pivot: {x: 0.074509814, y: 0.35459384}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb2a379498510c4fb5c315575731e2d
+      internalID: 1875076476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_7
+      rect:
+        serializedVersion: 2
+        x: 2690
+        y: 1400
+        width: 733
+        height: 553
+      alignment: 9
+      pivot: {x: 0.07650761, y: 0.3679422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10beb307cab7c294d9c868f0919012ab
+      internalID: -1908174871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_8
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 807
+        width: 734
+        height: 550
+      alignment: 9
+      pivot: {x: 0.07819601, y: 0.38278976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece89bd264c0f80488f5aa3d54cc9787
+      internalID: 1815198941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_9
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 805
+        width: 733
+        height: 552
+      alignment: 9
+      pivot: {x: 0.07388801, y: 0.38514024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc2a0eab50d68243a1b1441d1ebf8d3
+      internalID: -2085002701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_10
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 803
+        width: 735
+        height: 554
+      alignment: 9
+      pivot: {x: 0.07503471, y: 0.3864909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d190e701a2ec248bd5587fa202e156
+      internalID: -1177966682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_11
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 803
+        width: 735
+        height: 554
+      alignment: 9
+      pivot: {x: 0.07552415, y: 0.38606498}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066c7252f1746c24ab2c097b3e3e0f48
+      internalID: -2042155434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_12
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 117
+        width: 733
+        height: 553
+      alignment: 9
+      pivot: {x: 0.071378075, y: 0.38700786}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae832b08c9486014b83184669ae27f66
+      internalID: -1048156384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_13
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 117
+        width: 733
+        height: 553
+      alignment: 9
+      pivot: {x: 0.07254091, y: 0.3865451}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9203015b6f5ec4681147d32b1f0d27
+      internalID: -1448192402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king_bored_anim_14
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 117
+        width: 735
+        height: 553
+      alignment: 9
+      pivot: {x: 0.07379906, y: 0.38579112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6012ef4b135e0f844b25d803b2a7c323
+      internalID: 291502384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      king_bored_anim_0: 1935440408
+      king_bored_anim_1: -93174614
+      king_bored_anim_10: -1177966682
+      king_bored_anim_11: -2042155434
+      king_bored_anim_12: -1048156384
+      king_bored_anim_13: -1448192402
+      king_bored_anim_14: 291502384
+      king_bored_anim_2: 892570114
+      king_bored_anim_3: 102575017
+      king_bored_anim_4: -1945440694
+      king_bored_anim_5: 1310062353
+      king_bored_anim_6: 1875076476
+      king_bored_anim_7: -1908174871
+      king_bored_anim_8: 1815198941
+      king_bored_anim_9: -2085002701
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

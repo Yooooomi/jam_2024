@@ -4,12 +4,14 @@ public class Armor : MonoBehaviour
 {
     public float stunDuration;
 
-    private bool playerTrap = false;
     private float playerStunLeft = 0;
+    [SerializeField]
+    private Animator animator;
+    private Transform playerTrapped;
 
     void Update()
     {
-        if (!playerTrap)
+        if (playerTrapped == null)
         {
             return;
         }
@@ -22,12 +24,13 @@ public class Armor : MonoBehaviour
 
     void OnTrapReleased()
     {
+        playerTrapped.GetComponentInChildren<SpriteRenderer>().enabled = true;
         Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!playerTrap && !collider.CompareTag(Tags.PLAYER))
+        if (playerTrapped != null || !collider.CompareTag(Tags.PLAYER))
         {
             return;
         }
@@ -39,8 +42,11 @@ public class Armor : MonoBehaviour
         throwable.StopThrow();
         collider.GetComponent<SpeedModifier>().ApplyDot(new SpeedDot(stunDuration, 0));
         collider.GetComponent<JuggleModifier>().ApplyDot(new JuggleDot(stunDuration));
-        playerTrap = true;
+        playerTrapped = collider.transform;
         playerStunLeft = stunDuration;
         GameState.instance.gamePoints.RegisterPlayerInArmor(throwable.oldHolder, collider.transform);
+        playerTrapped.GetComponent<PlayerMovement>().SetPos(transform.position);
+        playerTrapped.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        animator.SetBool("playerTrap", true);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec8101008cf1b40458a9448ad71a9e17
+guid: b949e2dfb88f08e4fab7137dba2088e2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: armorAnimated_0
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 86
+        width: 209
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757506c02bd00bd4bae1618cfe518d9a
+      internalID: 537403449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAnimated_1
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 98
+        width: 268
+        height: 349
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48668ad0adcdc304ea47bafa9d72ab7f
+      internalID: 1860596993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAnimated_2
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 86
+        width: 209
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a169c40aba0dbb418f132ab00248b54
+      internalID: -2047642441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAnimated_3
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 79
+        width: 232
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f18f98845d7dd2488c83391dcf899e9
+      internalID: -559193832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      armorAnimated_0: 537403449
+      armorAnimated_1: 1860596993
+      armorAnimated_2: -2047642441
+      armorAnimated_3: -559193832
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

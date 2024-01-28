@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y, transform.position.z);
     }
 
+    public void MovePos(Vector2 pos) {
+        rigidbody2d.MovePosition(pos);
+    }
+
     private void FixedUpdate()
     {
         if (throwable.IsBeingPicked()) {
