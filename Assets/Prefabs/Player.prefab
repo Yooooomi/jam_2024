@@ -538,7 +538,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -956,7 +956,7 @@ MonoBehaviour:
   juggleModifier: {fileID: 8191476982315110677}
   playerSpeedModifier: {fileID: 4796238860036251162}
   playerControls: {fileID: 1995413801081972887}
-  juggleDuration: 5
+  juggleDuration: 4
 --- !u!114 &4796238860036251162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,18 +1094,18 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000043838755edeb0cc92fab224af99083891bc08723
+  m_ApplyToSortingLayers: 0000000043838755edeb0cc9f99083891bc08723
   m_ShapePath:
-  - {x: -0.107744694, y: 0.06585741, z: 0}
-  - {x: -0.39831161, y: 0.8178427, z: 0}
-  - {x: 0.34894514, y: 0.7320635, z: 0}
+  - {x: -0.12610483, y: 0.10257745, z: 0}
+  - {x: -0.22886276, y: 0.4842396, z: 0}
+  - {x: 0.24128246, y: 0.47966996, z: 0}
   - {x: 0.14173841, y: 0.105516315, z: 0}
-  m_ShapePathHash: 45135585
+  m_ShapePathHash: 1524381645
   m_Mesh: {fileID: 0}
-  m_InstanceId: 61832
+  m_InstanceId: 91796
   m_LocalBounds:
-    m_Center: {x: -0.024683237, y: 0.44185007, z: 0}
-    m_Extent: {x: 0.37362838, y: 0.37599266, z: 0}
+    m_Center: {x: 0.0062098503, y: 0.2934085, z: 0}
+    m_Extent: {x: 0.23507261, y: 0.19083108, z: 0}
 --- !u!114 &5071214757414502588
 MonoBehaviour:
   m_ObjectHideFlags: 0
