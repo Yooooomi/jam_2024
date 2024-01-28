@@ -107,10 +107,10 @@ RectTransform:
   - {fileID: 8241970292271588961}
   m_Father: {fileID: 7624653382783341154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2145112413165161422
 GameObject:
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -248,10 +248,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2282770062305000502}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -447}
-  m_SizeDelta: {x: 1819.4996, y: 86.18164}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 74.9}
+  m_SizeDelta: {x: 1919.4996, y: 186.18164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3184555606150295965
 CanvasRenderer:
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 143.22
-  m_fontSizeBase: 143.22
+  m_fontSize: 84.9
+  m_fontSizeBase: 84.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -406,8 +406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -447.05}
-  m_SizeDelta: {x: 0, y: -894.1}
+  m_AnchoredPosition: {x: 0, y: -57.55}
+  m_SizeDelta: {x: 0, y: -115.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5468015141709437396
 CanvasRenderer:
@@ -464,8 +464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 143.22
-  m_fontSizeBase: 143.22
+  m_fontSize: 73.4
+  m_fontSizeBase: 73.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 625966546023393171}
   - component: {fileID: 6394412833360958361}
   - component: {fileID: 8335650656171359647}
+  - component: {fileID: 9112835596937608607}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -759,6 +760,14 @@ MonoBehaviour:
   endGameUI: {fileID: 1133065666721404310}
   playerPointPrefab: {fileID: 3204264476432617370, guid: 628a8695f1d54e14db70694cb3c760a0, type: 3}
   spawnY: 100
+--- !u!81 &9112835596937608607
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422832944482460656}
+  m_Enabled: 1
 --- !u!1 &3425540596631365602
 GameObject:
   m_ObjectHideFlags: 0

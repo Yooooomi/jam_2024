@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cake : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Cake : MonoBehaviour
     public float slowEfficiency;
     public float slowTime;
     public float juggleCooldownDuration = 0.5f;
+    public UnityEvent onHit = new UnityEvent();
 
     private void Update()
     {
@@ -46,9 +48,9 @@ public class Cake : MonoBehaviour
                 collider.GetComponent<JuggleModifier>().ApplyDot(new JuggleDot(juggleCooldownDuration));
             }
             juggle.StopJuggle();
-        
         }
 
+        onHit.Invoke();
         Destroy(root.gameObject);
     }
 }

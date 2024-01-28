@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Picker : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Picker : MonoBehaviour
     }
     private PlayerControls controls;
     private float startedThrowingAt = -1;
+    [SerializeField]
+    private float maxTimePickingPlayer;
+    private float startedPickingAt = -1;
     public float timeToMaxThrowPower;
     private bool wasHittingPickButton;
     [SerializeField]
@@ -30,6 +34,7 @@ public class Picker : MonoBehaviour
     [SerializeField]
     private float releaseThenPickCooldown;
     private float lastTimeReleased;
+    public UnityEvent onThrow = new UnityEvent();
 
     private void Start()
     {
@@ -85,6 +90,7 @@ public class Picker : MonoBehaviour
         }
 
         Pickable nearestPickable = pickables.OrderBy(e => (transform.position - e.transform.position).magnitude).First();
+        startedPickingAt = Time.time;
         nearestPickable.Pick(transform);
         currentlyPicked = nearestPickable;
 
@@ -110,14 +116,19 @@ public class Picker : MonoBehaviour
         });
     }
 
-    private void ReleaseCurrentlyPicked()
+    private void ReleaseCurrentlyPicked(bool dropped)
     {
         speedModifier.CancelDot(carryPlayerSlowDot);
         juggleModifier.CancelDot(juggleDot);
         lastTimeReleased = Time.time;
         List<Collider2D> effectiveColliders = currentlyPicked.effectiveColliders;
         effectiveColliders.ForEach(e => Physics2D.IgnoreCollision(myCollider, e, true));
-        currentlyPicked.Release(Mathf.Clamp01(Time.time - startedThrowingAt) / timeToMaxThrowPower);
+        if (dropped) {
+            currentlyPicked.Drop();
+        } else {
+            currentlyPicked.Release(Mathf.Clamp01(Time.time - startedThrowingAt) / timeToMaxThrowPower);
+            onThrow.Invoke();
+        }
         currentlyPicked = null;
         startedThrowingAt = -1;
         StartCoroutine(ReenableCollisions(effectiveColliders));
@@ -142,6 +153,10 @@ public class Picker : MonoBehaviour
         return Mathf.Clamp01((Time.time - startedThrowingAt) / timeToMaxThrowPower);
     }
 
+    private bool ShouldReleasePlayer() {
+        return IsHoldingPlayer() && startedPickingAt + maxTimePickingPlayer <= Time.time;
+    }
+
     private void Update()
     {
         if (ownPickable.IsBeingPicked() || ownPickable.IsBeingThrown())
@@ -154,11 +169,15 @@ public class Picker : MonoBehaviour
             startedThrowingAt = Time.time;
         }
 
+        if (ShouldReleasePlayer()) {
+            ReleaseCurrentlyPicked(true);
+        }
+
         if (wasHittingPickButton && !controls.picking)
         {
             if (IsHolding())
             {
-                ReleaseCurrentlyPicked();
+                ReleaseCurrentlyPicked(false);
             }
             else
             {
