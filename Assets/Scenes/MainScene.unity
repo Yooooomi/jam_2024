@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cake
       objectReference: {fileID: 0}
+    - target: {fileID: 5437294051195665284, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7712604070969522156, guid: 11603f92549b5114c8369362b7c221cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.69

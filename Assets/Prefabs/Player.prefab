@@ -902,7 +902,7 @@ MonoBehaviour:
   juggleModifier: {fileID: 8191476982315110677}
   playerSpeedModifier: {fileID: 4796238860036251162}
   playerControls: {fileID: 1995413801081972887}
-  juggleDuration: 1
+  juggleDuration: 5
 --- !u!114 &4796238860036251162
 MonoBehaviour:
   m_ObjectHideFlags: 0

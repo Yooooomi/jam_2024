@@ -366,9 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd89f3ff6a65074db9fc313a1969651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreGameStarted: 0
   kingLifecycle: {fileID: 8990117128420888885}
   pointsSystem:
-    juggle: 10
+    juggle: 5
     throwPlayer: 1
     throwPlayerInArmor: 20
     foodThrow: 1
