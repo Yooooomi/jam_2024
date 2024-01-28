@@ -71,7 +71,7 @@ public class Picker : MonoBehaviour
             if (pickable.root.CompareTag(Tags.PLAYER))
             {
                 Picker otherPlayerPicker = pickable.root.GetComponent<Picker>();
-                if (otherPlayerPicker.IsHolding() && otherPlayerPicker.currentlyPicked.CompareTag(Tags.PLAYER))
+                if (otherPlayerPicker.IsHoldingPlayer())
                 {
                     return null;
                 }
@@ -91,6 +91,10 @@ public class Picker : MonoBehaviour
         juggleModifier.ApplyDot(juggleDot);
         carryPlayerSlowDot = new SpeedDot(Dot.INFINITE_DURATION, currentlyPicked.speedDotValue);
         speedModifier.ApplyDot(carryPlayerSlowDot);
+    }
+
+    public bool IsHoldingPlayer() {
+        return IsHolding() && currentlyPicked.root.CompareTag(Tags.PLAYER);
     }
 
     private IEnumerator ReenableCollisions(List<Collider2D> colliders)

@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8191930911488095691, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8894653688241056825, guid: e4856ef12ac209d44988d16e1c612aa0, type: 3}
       propertyPath: m_Mesh
       value: 
