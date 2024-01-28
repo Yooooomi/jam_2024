@@ -25,9 +25,14 @@ public class GameState : MonoBehaviour
     public UnityEvent onGameEnd = new UnityEvent();
     private Coroutine gameStartCoroutine;
 
-    private Dictionary<int, PlayerGameState> players = new Dictionary<int, PlayerGameState>();
+    public Dictionary<int, PlayerGameState> players
+    {
+        get;
+        private set;
+    } = new Dictionary<int, PlayerGameState>();
 
-    public bool gameStarted {
+    public bool gameStarted
+    {
         get;
         private set;
     } = false;
@@ -53,14 +58,16 @@ public class GameState : MonoBehaviour
 
     public int GetPlayerIdWithMostPoint()
     {
-        if (players.Count == 0) {
+        if (players.Count == 0)
+        {
             Debug.LogError("Calling GetPlayerIdWithMostPoint but no player are available");
             return 0;
         }
         return players.OrderByDescending(p => p.Value.points).First().Key;
     }
 
-    public int GetTotalPoints() {
+    public int GetTotalPoints()
+    {
         return players.Sum(p => p.Value.points);
     }
 
