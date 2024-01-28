@@ -21,7 +21,7 @@ public class GamePoints : MonoBehaviour
 
     private void AddPlayerPoint(PlayerGameState player, int points, KingExpectationType kingExpectationType, int playerBullied = 0)
     {
-        if (!ignoreGameStarted && !GameState.instance.gameStarted) {
+        if ((!ignoreGameStarted && !GameState.instance.gameStarted) || GameState.instance.gameIsEnded) {
             return;
         }
         if (kingExpectationType == kingLifecycle.currentKingExpectation &&

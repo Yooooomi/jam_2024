@@ -92,8 +92,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 7712604070969522156}
   throwablePicker: {fileID: 9037117954386283547}
-  slowEfficiency: 0.5
+  slowEfficiency: 0.7
   slowTime: 1
+  juggleCooldownDuration: 0.5
 --- !u!1 &5437294051195665284
 GameObject:
   m_ObjectHideFlags: 0

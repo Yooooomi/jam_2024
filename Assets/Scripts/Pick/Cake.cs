@@ -7,6 +7,7 @@ public class Cake : MonoBehaviour
     public ThrowablePickable throwablePicker;
     public float slowEfficiency;
     public float slowTime;
+    public float juggleCooldownDuration = 0.5f;
 
     private void Update()
     {
@@ -14,14 +15,17 @@ public class Cake : MonoBehaviour
         {
             Vector2 throwDirection = throwablePicker.GetFrameThrow();
             root.position += new Vector3(throwDirection.x, throwDirection.y, 0) * Time.deltaTime;
-        } else if (throwablePicker.HasBeenThrown()) {
+        }
+        else if (throwablePicker.HasBeenThrown())
+        {
             Destroy(root.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!throwablePicker.HasBeenThrown()) {
+        if (!throwablePicker.HasBeenThrown())
+        {
             return;
         }
         SpeedModifier speedModifier = collider.GetComponent<SpeedModifier>();
@@ -35,8 +39,14 @@ public class Cake : MonoBehaviour
         speedModifier.ApplyDot(new SpeedDot(slowTime, 1 - slowEfficiency));
 
         Juggle juggle = collider.GetComponent<Juggle>();
-        if (juggle) {
+        if (juggle)
+        {
+            if (juggle.isJuggling)
+            {
+                collider.GetComponent<JuggleModifier>().ApplyDot(new JuggleDot(juggleCooldownDuration));
+            }
             juggle.StopJuggle();
+        
         }
 
         Destroy(root.gameObject);

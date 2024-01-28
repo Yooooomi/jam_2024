@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -23,11 +24,27 @@ public class GameState : MonoBehaviour
     [HideInInspector]
     public UnityEvent onGameStarted = new UnityEvent();
     public UnityEvent onGameEnd = new UnityEvent();
+    public bool gameIsEnded
+    {
+        get;
+        private set;
+    } = false;
+    [SerializeField]
+    private float cooldownTimeBeforeRestart = 5;
+    private float endTime = 0;
+    [SerializeField]
+    private GameObject restartText;
+
     private Coroutine gameStartCoroutine;
 
-    private Dictionary<int, PlayerGameState> players = new Dictionary<int, PlayerGameState>();
+    public Dictionary<int, PlayerGameState> players
+    {
+        get;
+        private set;
+    } = new Dictionary<int, PlayerGameState>();
 
-    public bool gameStarted {
+    public bool gameStarted
+    {
         get;
         private set;
     } = false;
@@ -35,6 +52,13 @@ public class GameState : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        onGameEnd.AddListener(OnGameEnd);
+    }
+
+    void OnGameEnd()
+    {
+        gameIsEnded = true;
+        endTime = Time.time;
     }
 
     public void AddPlayer(PlayerGameState playerGameState)
@@ -66,14 +90,16 @@ public class GameState : MonoBehaviour
 
     public int GetPlayerIdWithMostPoint()
     {
-        if (players.Count == 0) {
+        if (players.Count == 0)
+        {
             Debug.LogError("Calling GetPlayerIdWithMostPoint but no player are available");
             return 0;
         }
         return players.OrderByDescending(p => p.Value.points).First().Key;
     }
 
-    public int GetTotalPoints() {
+    public int GetTotalPoints()
+    {
         return players.Sum(p => p.Value.points);
     }
 
@@ -147,6 +173,23 @@ public class GameState : MonoBehaviour
         else
         {
             ReadyGame();
+        }
+    }
+
+    private bool ReadyToRestart() {
+        return gameIsEnded && endTime + cooldownTimeBeforeRestart < Time.time;
+    }
+
+    void Update() {
+        if (ReadyToRestart() && !restartText.activeSelf) {
+            restartText.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        if (ReadyToRestart()) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -8,9 +8,12 @@ public abstract class Pickable : MonoBehaviour
     public float speedDotValue = 1.0f;
 
     [SerializeField]
-    protected Transform root;
+    public Transform root;
     public UnityEvent onPick = new UnityEvent();
-    protected Transform currentHolder;
+    public Transform currentHolder {
+        get;
+        protected set;
+    }
     [SerializeField]
     public List<Collider2D> effectiveColliders = new List<Collider2D>();
 

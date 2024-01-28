@@ -17,7 +17,10 @@ public class Picker : MonoBehaviour
     private JuggleModifier juggleModifier;
     private JuggleDot juggleDot = new JuggleDot(Dot.INFINITE_DURATION);
 
-    private Pickable currentlyPicked;
+    public Pickable currentlyPicked {
+        private set;
+        get;
+    }
     private PlayerControls controls;
     private float startedThrowingAt = -1;
     public float timeToMaxThrowPower;
@@ -64,6 +67,14 @@ public class Picker : MonoBehaviour
             if (!pickable.CanBePicked())
             {
                 return null;
+            }
+            if (pickable.root.CompareTag(Tags.PLAYER))
+            {
+                Picker otherPlayerPicker = pickable.root.GetComponent<Picker>();
+                if (otherPlayerPicker.IsHolding() && otherPlayerPicker.currentlyPicked.CompareTag(Tags.PLAYER))
+                {
+                    return null;
+                }
             }
             return pickable;
         }).Where(e => e != null).ToList();
