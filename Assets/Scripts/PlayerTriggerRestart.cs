@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerTriggerRestart : MonoBehaviour
 {
-    private float endTime = 0;
     [SerializeField]
     private PlayerControls playerControls;
 

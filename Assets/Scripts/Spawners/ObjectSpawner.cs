@@ -8,6 +8,7 @@ public class ObjectSpawner : MonoBehaviour
     public float maxDelayBetweenPickupAndSpawn = 10f;
     public float minDelayBetweenPickupAndSpawn = 1f;
     public bool spawnAtStart = false;
+    public float rotateSpawnedObjectZ = 0f;
 
     protected GameObject spawnedGameObject;
 
@@ -32,7 +33,7 @@ public class ObjectSpawner : MonoBehaviour
         GameObject toSpawn = itemToSpawn[Random.Range(0, itemToSpawn.Count - 1)];
         Vector3 positionToSpawn = transform.TransformPoint(Vector3.zero);
         positionToSpawn.z = -1;
-        spawnedGameObject = Instantiate(toSpawn, positionToSpawn, Quaternion.identity);
+        spawnedGameObject = Instantiate(toSpawn, positionToSpawn, Quaternion.Euler(0, 0, rotateSpawnedObjectZ));
         itemIsPresent = true;
     }
 
